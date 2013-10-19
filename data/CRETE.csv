@@ -1,0 +1,40 @@
+,Dataset: CRETE-1993,,,,,,,,,,,
+,Data From (Title): Combat Effectiveness of Allied and,,,,,,,,,,,
+,German Troops in the World War II Battle of Crete.,,,,,,,,,,,
+,"Author: Engel, Joseph H.",,,,,,,,,,,
+,Organization: Operations Evaluation Group.,,,,,,,,,,,
+,"Address: Arlington, VA.",,,,,,,,,,,
+,Publication Date: 8 February 1963.,,,,,,,,,,,
+,Classification: UNCLASSIFIED.,,,,,,,,,,,
+,Source Available From: Center for Naval Analyses.,,,,,,,,,,,
+,"Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency",,,,,,,,,,,
+,Spreadsheet last revised: 30 October 1993,,,,,,,,,,,
+-,-,-,-,-,-,-,-,-,-,-,-,-
+,,,,|---------,-,Table I,-,-,-,-,-,--------|
+Day,,,On Day,German,German,German,German,Allied,Allied,Allied,Allied,Allied
+Number,Notes,Date,D-Day+,Landings,Loss/Dy,Losses,Survivors,Ashore,Landings,Loss/Dy,Losses,Survivors
+1,,,0,8100,Err:522,Err:522,Err:522,40550,0,3239.36415,3239.36415,40500
+2,,,1,7400,Err:522,Err:522,Err:522,,0,Err:522,Err:522,Err:522
+3,,,2,1357,Err:522,Err:522,Err:522,,-667,Err:522,Err:522,Err:522
+4,,,3,1357,Err:522,Err:522,Err:522,,-666,Err:522,Err:522,Err:522
+5,,,4,1357,Err:522,Err:522,Err:522,,-667,Err:522,Err:522,Err:522
+6,,,5,1357,Err:522,Err:522,Err:522,,-350,Err:522,Err:522,Err:522
+7,,,6,1357,Err:522,Err:522,Err:522,,-350,Err:522,Err:522,Err:522
+8,,,7,1357,Err:522,Err:522,Err:522,,600,Err:522,Err:522,Err:522
+9,,,8,1358,Err:522,Err:522,Err:522,,-350,Err:522,Err:522,Err:522
+10,,,9,0,Err:522,Err:522,Err:522,,-6950,Err:522,Err:522,Err:522
+11,,,10,0,Err:522,Err:522,Err:522,,-2950,Err:522,Err:522,Err:522
+12,,,11,0,Err:522,Err:522,Err:522,,-2950,Err:522,Err:522,Err:522
+13,,,12,0,Err:522,Err:522,Err:522,,-3950,Err:522,Err:522,Err:522
+14,,,13,0,0,0,Err:522,0,0,0,Err:522,0
+-,-,-,-,+---------,-,-,-,-,-,-,-,--------|
+,,,Totals,25000,Err:522,,,,-19250,Err:522,,
+,Assumed casualty rate/day =,,,,0.0259339,6000,19000,,,0.0799843,21300,0
+,,,,,Err:522,,,,,Err:522,,
+,,,,,,,,,,Err:522,,
+,,,,,,,,,,,,
+,,NOTES:,,,,,,,,,,
+,,,"1. For both sides, daily losses assumed proportional to initial",,,,,,,,,
+,,,   daily strengths.,,,,,,,,,
+,,,"2. Initial and final strengths are assumed known, and hence taken as",,,,,,,,,
+,,,"   targets to be ""hit"" exactly.",,,,,,,,,

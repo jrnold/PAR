@@ -1,0 +1,141 @@
+,Dataset: REISTERK-1986,,,,,,,,,,,
+,Data From (Title): Battle Casualties and Medical Statistics:,,,,,,,,,,,
+,"US Army Experience in the Korean War (Chapter 2, pasim).",,,,,,,,,,,
+,"Author: Reister, Frank A.",,,,,,,,,,,
+,Organization: The Surgeon General.,,,,,,,,,,,
+,"Address: Department of the Army, Washington, DC.",,,,,,,,,,,
+,Publication Date: 1986.,,,,,,,,,,,
+,Classification: UNCLASSIFIED,,,,,,,,,,,
+,Source Available From: Libraries.,,,,,,,,,,,
+,"Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency",,,,,,,,,,,
+,Spreadsheet last revised: 1 November 1993.,,,,,,,,,,,
+=,=,=,=,=,=,=,=,=,=,=,=,=
+,Data on Division-level Units,,,,,,,,,,,
+-,-,-,-,-,-,-,-,-,-,-,-,-
+,,Operation,,Start,End,Type ,No. of,No. of,Mean Unit,,,
+No.,Page,Type,Operation Name,Date,Date,Unit,Units,Unit-Days,Strength,KIA,WIA-CRO,WIA-Adm
+-,-,-,-,-,-,-,-,-,-,-,-,-
+1,23,Offensive,Breakout of Pusan Perimeter,09/16/1950,09/27/1950,Division,4,48,15217,790,340,3204
+2,23,Offensive,Inchon Landing and Liberation of Seoul,09/18/1950,09/30/1950,Division,1,13,14127,94,5,319
+3,23,Offensive,United Nations Counteroffensive,01/25/1951,02/20/1951,Division,6,125,16495,667,218,2903
+4,23,Offensive,Operation KILLER,02/21/1951,03/07/1951,Division,4,56,16135,144,117,804
+5,23,Offensive,Operation RIPPER,03/07/1951,04/04/1951,Division,6,161,16562,566,329,2891
+6,23,Offensive,Operation RUGGED,04/01/1951,04/15/1951,Division,6,44,17278,156,136,765
+7,23,Offensive,Operation DAUNTLESS,04/10/1951,04/22/1951,Division,3,36,18479,95,73,983
+8,23,Offensive,Operation DETONATE,05/20/1951,06/08/1951,Division,6,88,19201,530,376,2819
+9,23,Offensive,Operation PILEDRIVER,06/03/1951,06/12/1951,Division,4,35,18622,231,379,1408
+10,23,Offensive,Operation COMMANDO,10/03/1951,10/15/1951,Division,2,16,19942,405,230,2008
+11,23,Offensive,Operations NOMAD/POLAR and MISSOURI,10/13/1951,10/22/1951,Division,1,10,21585,265,76,1411
+12,26,Pursuit,South of 38th Parallel,09/28/1950,11/30/1950,Division,5,113,16946,194,129,509
+13,26,Pursuit,North of 38th Parallel,10/05/1950,11/27/1950,Division,5,162,15601,463,129,1941
+14,26,Pursuit,Iwon Landing & Pursuit,10/31/1950,11/27/1950,Division,1,28,14788,45,5,179
+15,26,Static,"Line ""D""",01/05/1951,01/29/1951,Division,6,107,16548,93,13,266
+16,26,Static,Line BOSTON,02/18/1951,03/06/1951,Division,2,32,16194,22,26,99
+17,26,Static,Line KANSAS,04/04/1951,04/29/1951,Division,6,48,17847,46,74,183
+18,26,Static,Line GOLDEN,04/29/1951,05/19/1951,Division,3,58,19323,33,151,254
+19,26,Static,Line NO NAME,04/29/1951,05/19/1951,Division,3,55,18486,27,18,178
+20,26,Static,Line WYOMING-I Corps,06/10/1951,10/02/1951,Division,3,219,18859,280,583,1124
+21,26,Static,Line WYOMING-IX Corps,06/13/1951,10/31/1951,Division,3,200,20657,344,336,1644
+22,26,Static,Line KANSAS/HAYS-X Corps,07/15/1951,10/04/1951,Division,1,46,18504,90,123,436
+23,26,Static,Line JAMESTOWN,10/07/1951,07/27/1953,Division,6,957,17971,1042,1594,4651
+24,26,Static,Line MISSOURI,10/23/1951,07/27/1953,Division,6,940,19208,761,1246,4000
+25,26,Static,Line MINNESOTA,10/16/1951,07/27/1953,Division,5,832,19808,891,1385,4714
+26,28,Limited,Operation WYOMING-I Corps,07/01/1951,10/03/1951,Division,6,20,19280,166,192,776
+27,28,Limited,Operation WYOMING-IX Corps,06/26/1951,09/21/1951,Division,7,21,20762,283,186,1317
+28,28,Limited,Operation KANSAS-X Corps,07/26/1951,09/05/1951,Division,2,15,18889,316,154,1369
+29,28,Limited,Operation HAYS-X Corps,09/09/1951,10/15/1951,Division,4,32,19706,578,221,2671
+30,28,Limited,Operation JAMESTOWN,10/16/1951,07/24/1953,Division,17,120,18452,1242,826,4999
+31,28,Limited,Operation MISSOURI,02/10/1952,11/04/1952,Division,5,39,17571,391,386,1562
+32,28,Limited,Operation MINNESOTA,02/10/1952,11/04/1952,Division,3,10,20851,57,49,201
+33,30,Defensive,Delaying Invasion,07/04/1950,08/03/1950,Division,3,69,12043,1991,150,2438
+34,30,Defensive,Defense of Pusan Perimeter,08/04/1950,09/15/1950,Division,4,168,14345,2623,717,8091
+35,30,Defensive,"CCF Counteroffensive, North Korea",11/25/1950,12/15/1950,Division,6,34,16778,562,114,3008
+36,30,Defensive,"CCF Counterattack, Wonju-Chipyong",02/12/1951,02/21/1951,Division,3,24,17220,651,162,1296
+37,30,Defensive,"CCF First Spring Offensive, 1951",04/22/1951,04/29/1951,Division,5,32,18343,314,219,1381
+38,30,Defensive,"CCF Second Spring Offensive, 1951",05/17/1951,05/22/1951,Division,3,15,19520,333,116,772
+39,30,Defensive,"CCF Attack, Western & Central Front",10/06/1952,10/13/1952,Division,1,8,17395,51,119,229
+40,30,Defensive,"CCF Attack, ROK II Corps",06/10/1953,06/18/1953,Division,1,9,22957,174,145,679
+41,30,Defensive,Kumsong River Salient,07/14/1953,07/20/1953,Division,3,17,21860,182,137,581
+42,31,Withdrawal,Evacuation of Hungnam,12/01/1950,12/24/1950,Division,2,43,15044,117,13,508
+43,31,Withdrawal,"Withdrawal to Line ""D""",12/02/1950,01/16/1951,Division,4,151,15843,193,192,772
+-,-,-,-,-,-,-,-,-,-,-,-,-
+,,,,,,,,,,,,
+=,=,=,=,=,=,=,=,=,=,=,=,
+,Data on Regimental-level Units,,,,,,,,,,,
+-,-,-,-,-,-,-,-,-,-,-,-,
+,,Operation,,Type ,No. of,No. of,Mean Unit,,,WIA-,WIA/KIA,
+No.,Page,Type,Tactical Action,Unit,Units,Unit-Days,Strength,KIA,WIA-CRO,Admitted,Ratio,
+-,-,-,-,-,-,-,-,-,-,-,-,
+1,23,Offensive,"Attack, heavy resistance",Regiment,18,208,3290,1800,678,10118,5.99777777777778,
+2,23,Offensive,"Attack, light resistance",Regiment,19,517,3375,936,667,4422,5.43696581196581,
+3,23,Offensive,"Airdrop attack, Munson-ni",Regiment,1,1,4223,3,0,44,14.6666666666667,
+4,23,Offensive,Assault river crossing,Regiment,15,39,3071,179,118,885,5.60335195530726,
+5,23,Offensive,"Defense, enemy attack or counterattack",Regiment,17,42,3373,314,113,1045,3.68789808917197,
+6,23,Offensive,Patrolling,Regiment,19,427,3301,229,220,904,4.90829694323144,
+7,23,Offensive,"Establish, hold, or consolidate defensive position",Regiment,17,80,3258,59,64,330,6.67796610169492,
+8,23,Offensive,Mopping up or consolidating gains,Regiment,8,14,2587,24,16,81,4.04166666666667,
+9,23,Offensive,Movement or redeployment,Regiment,19,164,3295,35,50,213,7.51428571428571,
+10,23,Offensive,Reserve,Regiment,18,432,3345,62,91,184,4.43548387096774,
+11,24,Pursuit,"Attack, heavy resistance",Regiment,11,33,2801,147,17,629,4.39455782312925,
+12,24,Pursuit,"Attack, light resistance",Regiment,14,69,2953,42,7,148,3.69047619047619,
+13,24,Pursuit,"Airdrop attack, Sukchon-Sunchon",Regiment,1,2,3407,37,0,47,1.27027027027027,
+14,24,Pursuit,Assault river crossing,Regiment,2,6,2851,11,1,53,4.90909090909091,
+15,24,Pursuit,"Defense, enemy attack or counterattack",Regiment,11,22,3149,159,23,511,3.35849056603774,
+16,24,Pursuit,Withdrawal and rearguard,Regiment,3,7,3303,1,0,12,12,
+17,24,Pursuit,Patrolling,Regiment,17,376,2866,95,77,395,4.96842105263158,
+18,24,Pursuit,"Establish, hold, or consolidate defensive position",Regiment,21,127,3284,45,9,100,2.42222222222222,
+19,24,Pursuit,Mopping up or consolidating gains,Regiment,9,59,2830,14,15,106,8.64285714285714,
+20,24,Pursuit,Movement or redeployment,Regiment,19,123,3014,26,4,89,3.57692307692308,
+21,24,Pursuit,Reserve,Regiment,19,151,2950,12,35,132,13.9166666666667,
+22,27,Static,"Attack, heavy resistance",Regiment,8,7,3265,81,35,288,3.98765432098765,
+23,27,Static,"Attack, light resistance",Regiment,20,53,3427,100,64,524,5.88,
+24,27,Static,"Defense, enemy attack or counterattack",Regiment,20,75,3580,314,258,1004,4.01910828025478,
+25,27,Static,Withdrawal and rearguard,Regiment,5,8,3457,4,7,35,10.5,
+26,27,Static,Patrolling,Regiment,26,4764,3607,1822,2880,9076,6.56201975850714,
+27,27,Static,"Establish, hold, or consolidate defensive position",Regiment,26,3156,3595,886,1559,4485,6.82167042889391,
+28,27,Static,Movement or redeployment,Regiment,26,421,3609,66,75,250,4.92424242424242,
+29,27,Static,Reserve,Regiment,25,2512,3567,91,181,368,6.03296703296703,
+30,29,Limited,"Attack, heavy resistance",Regiment,17,92,3602,1223,630,6030,5.44562551103843,
+31,29,Limited,"Attack, light resistance",Regiment,17,62,3652,240,154,1080,5.14166666666667,
+32,29,Limited,"Defense, enemy attack or counterattack",Regiment,20,101,3609,1054,550,3617,3.95351043643264,
+33,29,Limited,Withdrawal and rearguard,Regiment,3,3,3496,2,4,4,4,
+34,29,Limited,Patrolling,Regiment,23,183,3598,149,299,775,7.20805369127517,
+35,29,Limited,"Establish, hold, or consolidate defensive position",Regiment,21,190,3591,196,150,612,3.88775510204082,
+36,29,Limited,Movement or redeployment,Regiment,13,47,3516,31,38,155,6.2258064516129,
+37,29,Limited,Reserve,Regiment,17,103,3542,6,38,43,13.5,
+38,31,Defensive,"Attack, heavy resistance",Regiment,16,70,2767,638,126,2470,4.06896551724138,
+39,31,Defensive,"Attack, light resistance",Regiment,18,44,3035,158,84,600,4.32911392405063,
+40,31,Defensive,"Defense, enemy attack or counterattack",Regiment,21,350,2639,4038,782,9256,2.48588410104012,
+41,31,Defensive,Withdrawal and rearguard,Regiment,18,91,3246,306,67,1229,4.23529411764706,
+42,31,Defensive,Patrolling,Regiment,20,189,2514,232,121,806,3.99568965517241,
+43,31,Defensive,"Establish, hold, or consolidate defensive position",Regiment,24,253,2924,440,279,1425,3.87272727272727,
+44,31,Defensive,Movement or redeployment,Regiment,22,102,3020,53,41,174,4.05660377358491,
+45,31,Defensive,Reserve,Regiment,21,134,2774,37,37,152,5.10810810810811,
+46,32,Withdrawal,"Attack, light resistance",Regiment,2,3,2894,7,1,28,4.14285714285714,
+47,32,Withdrawal,"Defense, enemy attack or counterattack",Regiment,5,11,2870,45,18,116,2.97777777777778,
+48,32,Withdrawal,Withdrawal and rearguard,Regiment,12,76,2704,155,18,570,3.79354838709677,
+49,32,Withdrawal,Patrolling,Regiment,16,95,2916,15,9,92,6.73333333333333,
+50,32,Withdrawal,"Establish, hold, or consolidate defensive position",Regiment,16,127,3025,24,4,153,6.54166666666667,
+51,32,Withdrawal,Movement or redeployment,Regiment,16,103,2962,14,45,60,7.5,
+52,32,Withdrawal,Reserve,Regiment,12,195,2977,7,70,42,16,
+-,-,-,-,-,-,-,-,-,-,-,-,
+,,,,,,,,,,,,
+NOTES:,,,,,,,,,,,,
+1,The types of operations are defined as follows:,,,,,,,,,,,
+,Offensive: A major offensive operation involving more than one,,,,,,,,,,,
+,,divison over a wide front and representing a major United,,,,,,,,,,
+,,Nations effort.,,,,,,,,,,
+,Pursuit: Exploitation of complete disintegration of the North,,,,,,,,,,,
+,,Korean Army in retreat.,,,,,,,,,,
+,Static: A type of operation developed from arbitrary phase lines,,,,,,,,,,,
+,,"which usually follwed the natural features of terrain, such",,,,,,,,,,
+,,"as river or ridge lines, and delineated major objectives on",,,,,,,,,,
+,,offense and composed secondary lines of resistance on,,,,,,,,,,
+,,defense.,,,,,,,,,,
+,Limited: Limited operations with relatively small forces of,,,,,,,,,,,
+,,"regimental size or smaller, undertaken to keep the enemy off",,,,,,,,,,
+,,balance and to seize dominating terrain in order to improve,,,,,,,,,,
+,,the defensive position.,,,,,,,,,,
+,Defensive (Enemy Offense): Major offensive operations by,,,,,,,,,,,
+,,North Korean and Chinese Communist Forces.,,,,,,,,,,
+,"Withdrawal: Major withdrawal actions, both of which resulted",,,,,,,,,,,

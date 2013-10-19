@@ -1,0 +1,51 @@
+,Dataset: WESTWALL-1993,,,,,,,,,,,,,,,,,
+,Data From (Title): (i) Combat History Analysis Effort (CHASE),,,,,,,,,,,,,,,,,
+,,"Data Enhancement Study (CDES), and (ii) Data Base Error",,,,,,,,,,,,,,,,
+,,Correction (DBEC). ,,,,,,,,,,,,,,,,
+,Author: Historical Evaluation and Research Organization.,,,,,,,,,,,,,,,,,
+,"Organization: Data Memory Systems, Inc.",,,,,,,,,,,,,,,,,
+,"Address: Fairfax, VA.",,,,,,,,,,,,,,,,,
+,Publication Date: 31 January 1986.,,,,,,,,,,,,,,,,,
+,Classification: UNCLASSIFIED.,,,,,,,,,,,,,,,,,
+,"Source Available From: DTIC as AD-A175 712 through AD-A 175 716, and",,,,,,,,,,,,,,,,,
+,,AD-A176 750. ,,,,,,,,,,,,,,,,
+,"Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency",,,,,,,,,,,,,,,,,
+,Spreadsheet last revised: 30 October 1993,,,,,,,,,,,,,,,,,
+-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+,,,,,,,,,,,,,,,Rein/Repl Rate,,Calc'd Strength,
+,Begin (Date & Time),,End (Date&Time),,,Begin,End,, Start Strength,, Losses During,,Rein/Repl During,,US,German,US,German
+No.,Date,Time,Date,Time,Dur (hrs),(hrs),(hrs),Active?,US,German,US,German,US,German,(per hr),(per hr),Start,Start
+-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+1,10/02/1944,11:00:00 AM,10/02/1944,06:30:00 PM,7.5,0,7.5,Y,25345,10844,205,238,0,0,0,0,25345,10844
+2,10/02/1944,06:30:00 PM,10/03/1944,06:00:00 AM,11.5,7.5,19,N,,,,,7128,5793,619.826086956522,503.739130434783,25297.896375,10738.5014375
+3,10/03/1944,06:00:00 AM,10/03/1944,04:45:00 PM,10.75,19,29.75,Y,32268,16399,202,381,0,0,0,0,32354.3734810506,16370.0376138866
+4,10/03/1944,04:45:00 PM,10/04/1944,05:00:00 AM,12.25,29.75,42,N,,,,,0,406,0,33.1428571428571,32252.4529447816,16177.0033331052
+5,10/04/1944,05:00:00 AM,10/04/1944,06:30:00 PM,13.5,42,55.5,Y,32066,16424,450,357,0,0,0,0,32137.6804763421,16363.7269686469
+6,10/04/1944,06:30:00 PM,10/05/1944,06:00:00 AM,11.5,55.5,67,N,,,,,0,7780,0,676.521739130435,32009.736586106,16122.9353976779
+7,10/05/1944,06:00:00 AM,10/05/1944,06:30:00 PM,12.5,67,79.5,Y,31616,23847,158,660,0,0,0,0,31902.3511184676,23698.6332539171
+8,10/05/1944,06:30:00 PM,10/06/1944,07:10:00 AM,12.6666666666667,79.5,92.1666666666667,N,,,,,4878,2311,385.105263157895,182.447368421053,31730.7828881397,23477.3106930327
+9,10/06/1944,07:10:00 AM,10/06/1944,06:30:00 PM,11.3333333333333,92.1666666666667,103.5,Y,36336,25498,272,716,0,0,0,0,36436.5507283054,25565.2432893291
+10,10/06/1944,06:30:00 PM,10/07/1944,09:00:00 AM,14.5,103.5,118,N,,,,,0,0,0,0,36268.7433119368,25336.0573852481
+11,10/07/1944,09:00:00 AM,10/07/1944,06:30:00 PM,9.5,118,127.5,Y,36064,24782,190,1264,0,0,0,0,36055.9732133534,25044.1846734452
+12,10/07/1944,06:30:00 PM,,,#N/A,127.5,#N/A,#N/A,35874,23518,#N/A,#N/A,#N/A,#N/A,#N/A,#N/A,35918.1780222647,24854.0795546778
+-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+,,,Overall,,127.5,,,,,,1477,3616,12006,16290,,,,
+-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+Notes:,,,,,,,,,,,,,,,,,,
+,"1.  Start and end dates and times from ""Engagement Durations,"" pg",,,,,,,,,,,,,,,,,
+,"51, Vol IV, CDES Report.",,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,"2.  Strength & loss from ""Task 8: Development of Strength and",,,,,,,,,,,,,,,,,
+,"Attrition Histories for Selected Battles,"" pp 125-129, Vol V, CDES",,,,,,,,,,,,,,,,,
+,Report.,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,"3.  The action after 06-Oct-44, 18:30 was not the same as before.",,,,,,,,,,,,,,,,,
+,Narrative for Westwall on pg 160 of Vol V of HERO Battle Data Base,,,,,,,,,,,,,,,,,
+,"Report states that ""On 6 October, despite the defensive efforts of",,,,,,,,,,,,,,,,,
+,"German reserves, the attack broke through the first band of the",,,,,,,,,,,,,,,,,
+,"Westwall, and on the following day (7 October) made sweeping",,,,,,,,,,,,,,,,,
+,"gains.""",,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,"4.  The parameters A, D, lam, and reinf/repl rate are all per hour.",,,,,,,,,,,,,,,,,
+,,(per hr),A = ,0.000555,lam = ,0.000566954583719,,,,,,,,,,,,
+,,(per hr),D = ,0.000579166666667,nu = ,1.02153979048471,,,,,,,,,,,,
