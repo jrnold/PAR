@@ -280,8 +280,7 @@ were taken; operation type as given by the source; tactical action;
 type unit; number of unit-days; mean unit strength; KIA; WIA-CRO;
 WIA-Admitted; and the WIA/KIA ratio.
 
-- *RMC.DB4*: This is a spreadsheet file readable by Quattro Pro
-Version 3.0.  It contains 150 rows recording selected events from the
+- *RMC.DB4*:  It contains 150 rows recording selected events from the
 World War II Ardennes Offensive (Battle of the Bulge) with dates
 ranging from 16 December 1944 through 2 January 1945, and 100 rows
 recording selected events from the World War II Lorraine Offensive
@@ -296,16 +295,14 @@ German degree of mechanization, US and German tank attrition, US and
 German personnel attrition; advance distance in km; and frontage in
 km.
 
-- *SP128.DB4*: This is a spreadsheet file readable by Quattro Pro
-Version 3.0.  It contains 92 rows recording selected battles with
+- *SP128.DB4*: It contains 92 rows recording selected battles with
 dates ranging from 1741 through 1945.  The columns include an
 arbitrary row or sequence number; battle name; ID of the source of the
 information; year; ID of the attacker and defender; attacker and
 defender initial strength, losses, and loss type code; duration in
 days; and ID of the winning side (coded for attacker or defender).
 
-- *SP190.DB4*: This is a spreadsheet file readable by Quattro Pro
-Version 3.0.  It contains 83 rows recording selected battles with
+- *SP190.DB4*: It contains 83 rows recording selected battles with
 dates ranging from 280BC through 1944 AD.  The columns include an
 arbitrary row or sequence number; battle name; ID of the war,
 campaign, or article; ID of the source of information; ID of the
