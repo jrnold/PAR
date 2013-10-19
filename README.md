@@ -3,27 +3,27 @@ Personnel Attrition Rates in Historical Land Combat Operations
 
 This repository contains the data from:
 
-     "PAR Datadisk (Personnel Attrition Rates in Historical Land
-     Combat Operations) (Revised) Version 2.1 (Computer Diskette).",
-     May 31, 1994, DTIC ADM000368. http://oai.dtic.mil/oai/oai?verb=getRecord&metadataPrefix=html&identifier=ADM000368
+"PAR Datadisk (Personnel Attrition Rates in Historical Land
+Combat Operations) (Revised) Version 2.1 (Computer Diskette).",
+May 31, 1994, DTIC ADM000368. http://oai.dtic.mil/oai/oai?verb=getRecord&metadataPrefix=html&identifier=ADM000368
 
 *PAR Datadisk (Personnel
 Attrition Rates in Historical Land Combat Operations) (Revised)
 Version 2.1 (on CD-ROM).*, May 31, 1994, AD-M000368,
 http://oai.dtic.mil/oai/oai?verb=getRecord&metadataPrefix=html&identifier=ADM000368
 
-    **Abstract:** This study provides a catalog of computerized data bases on
-    personnel casualties and attrition that will be of great value to
-    all who use personnel casualty and attrition data in studies and
-    analyses, weapons evaluation, wargames and simulation, model
-    validation, assessing the utility of protective measures, and so
-    forth. The scope of the study is limited to a selected class of
-    databases. The criteria for inclusion is as follows: The databases
-    must be in the public domain; in database form; contain
-    information on military operations in and/or outcomes of battles
-    or wars; must be available on disk; and will be useful to military
-    operations analysts, developers, users, accessors, and military
-    historians.
+**Abstract:** This study provides a catalog of computerized data bases on
+personnel casualties and attrition that will be of great value to
+all who use personnel casualty and attrition data in studies and
+analyses, weapons evaluation, wargames and simulation, model
+validation, assessing the utility of protective measures, and so
+forth. The scope of the study is limited to a selected class of
+databases. The criteria for inclusion is as follows: The databases
+must be in the public domain; in database form; contain
+information on military operations in and/or outcomes of battles
+or wars; must be available on disk; and will be useful to military
+operations analysts, developers, users, accessors, and military
+historians.
 
 The documentation for this data are contained in
 
