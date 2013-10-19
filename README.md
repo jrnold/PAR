@@ -35,7 +35,7 @@ The documentation for this data are contained in
 The original data were in an obsolete file format, ``WQ!`` which
 requires DOS + Quattro Pro (< 4.0) because it was compressed using
 [SQZ!](http://en.wikipedia.org/wiki/Synex_Systems_Corporation#SQZ.21).
-I liberated the files from this format and converted them to something usable.
+ liberated the files from this format and converted them to something usable.
 
 Files
 ---------------
@@ -58,43 +58,40 @@ back).
 - *AHART.txt*: A fixed-format ASCII file format is given below and explained more
 fully in the companion document in Appendix B under AHART-1993.
 
-   Field Name    Field Width in Characters
-   ----------   --------------------------
-   Source           20
-   Battle           12
-   Unit             12
-   Size             8
-   Date             8
-   ArtyUnit         12
-   TubeType         11
-   TubeCat          7
-   TubeQuant        12
-   TypeRd           6
-   RdPerDay         10
-   RoundQuant       8
-   DaysQuant        3
-   Operation        9
-   RoundWt          5
-   RdWtDay          10
-   TotalWt          12
-   RdTubeDay        6
-   RoundCost        4
-   RdCostDay        10
-   TotalCost        12
-   Notes            10
-   RedUnit          12
-   RSize            8
-   RedOpn           10
-   RTypeTube        12
-   RTubeQuant       10
-   RTypeRd          6
-   RRdPerDay        10
-   RRdQuant         12
-   Misc             57
-   ----------   --------------------------
-   Total            344
-
-
+| Field Name | Field Width in Characters
+| ---------- |:--------------------------
+| Source     |     20
+| Battle     |     12
+| Unit       |     12
+| Size       |     8
+| Date       |     8
+| ArtyUnit   |     12
+| TubeType   |     11
+| TubeCat    |     7
+| TubeQuant  |     12
+| TypeRd     |     6
+| RdPerDay   |     10
+| RoundQuant |     8
+| DaysQuant  |     3
+| Operation  |     9
+| RoundWt    |     5
+| RdWtDay    |     10
+| TotalWt    |     12
+| RdTubeDay  |     6
+| RoundCost  |     4
+| RdCostDay  |     10
+| TotalCost  |     12
+| Notes      |     10
+| RedUnit    |     12
+| RSize      |     8
+| RedOpn     |     10
+| RTypeTube  |     12
+| RTubeQuant |     10
+| RTypeRd    |     6
+| RRdPerDay  |     10
+| RRdQuant   |     12
+| Misc       |     57
+| **Total**  |     344
 
 - *BERNDT.DB4*:  It contains 78 rows recording selected battles with
 dates ranging from 1741 through 1877.  The columns include an
@@ -222,22 +219,20 @@ side.
 - *LMI.txt* A fixed-format ASCII file, whose format is given below and explained more
 fully in the companion document in Appendix B under LMI-1989.
 
-    Field   Field Name  Type        Width   Example
-    -----   ----------  ----        -----   -------
-    1       DATE        Date        8       19441220
-    2       UNIT        Character   5       INF D
-    3       DIV         Numeric     3       99
-    4       CORP        Numeric     2       5
-    5       ARMY        Numeric     2       1
-    6       AGP         Numeric     2       12
-    7       KIA         Numeric     5       15
-    8       WIA         Numeric     5       65
-    9       CMIA        Numeric     5       303
-    10      AUTH        Numeric     6       14184
-    11      ASSD        Numeric     6       10734
-    12      VERSION     Character   2
-    -----   ----------  ----        -----   -------
-                        Total       51
+Field|  Field Name| Type      | Width | Example
+-----|:-----------|:----------|:------|:---------
+1    |  DATE      | Date      | 8     | 19441220
+2    |  UNIT      | Character | 5     | INF D
+3    |  DIV       | Numeric   | 3     | 99
+4    |  CORP      | Numeric   | 2     | 5
+5    |  ARMY      | Numeric   | 2     | 1
+6    |  AGP       | Numeric   | 2     | 12
+7    |  KIA       | Numeric   | 5     | 15
+8    |  WIA       | Numeric   | 5     | 65
+9    |  CMIA      | Numeric   | 5     | 303
+10   |  AUTH      | Numeric   | 6     |  14184
+11   |  ASSD      | Numeric   | 6     |  10734
+12   |  VERSION   | Character | 2     |         
 
 - *MOTTELAY.DB4*: It contains 120 rows recording selected engagements
 of the US Civil War with dates ranging from June 1961 through April
