@@ -7,11 +7,6 @@ This repository contains the data from:
 Combat Operations) (Revised) Version 2.1 (Computer Diskette).",
 May 31, 1994, DTIC ADM000368. http://oai.dtic.mil/oai/oai?verb=getRecord&metadataPrefix=html&identifier=ADM000368
 
-*PAR Datadisk (Personnel
-Attrition Rates in Historical Land Combat Operations) (Revised)
-Version 2.1 (on CD-ROM).*, May 31, 1994, AD-M000368,
-http://oai.dtic.mil/oai/oai?verb=getRecord&metadataPrefix=html&identifier=ADM000368
-
 **Abstract:** This study provides a catalog of computerized data bases on
 personnel casualties and attrition that will be of great value to
 all who use personnel casualty and attrition data in studies and
