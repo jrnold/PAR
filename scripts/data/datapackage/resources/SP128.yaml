@@ -1,0 +1,51 @@
+path: data/SP128.csv
+description: |
+  :Dataset: SP128-1961
+  :Data From (Title): Historical Data and Lanchester's Theory of Combat
+  :Author: Helmbold, Robert L.
+  :Organization: Combat Operations Research Group.
+  :Address: Fort Monroe, VA.
+  :Publication Date: 1 July 1961.
+  :Classification: UNCLASSIFIED.
+  :Source Available From: DTIC as AD-480 975.
+  :Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  :Spreadsheet last revised: 30 October 1993
+
+schema:
+  fields:
+    - id: seq_no
+      type: integer
+    - id: battle_name
+      type: string
+      description: "Battle Name"
+    - id: ref_no
+      type: integer
+      description: |
+        Reference Number (as used in CORG-SP-128)
+    - id: year
+      type: integer
+      description: Year of the battle
+    - id: attacker_id
+      type: string
+      description: Attacker Id
+    - id: defender_id
+      type: string
+      description: Defender Id
+    - id: initial_attacker_strength
+      type: integer
+      description: Initial attacker strength
+    - id: initial_defender_strength
+      type: integer
+      description: Initial defender strength
+    - id: attacker_losses
+      type: integer
+      description: Attacker losses
+    - id: defender_losses
+      type: integer
+      description: Defender losses
+    - id: battle_duration
+      type: number
+      description: Battle duration (in days)
+    - id: wina
+      type: boolean
+      description: Did the attacker win?

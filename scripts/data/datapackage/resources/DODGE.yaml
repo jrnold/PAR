@@ -1,0 +1,48 @@
+name: DODGE
+path: data/DODGE.csv
+description: |
+  Dataset: DODGE-1993
+  Data From: "Napoleon: A History of the Art of War from Lutzen to Waterloo, With a Detailed Account of the Napoleonic Wars,"  (vol 4 of 4 volumes).
+  Author: Dodge, Theodore Ayrault.
+  Organization: AMS Press, Inc.
+  Address: New York, NY 10003.
+  Publication Date: 1970. (Reprinted from the edition of 1904-1907.)
+  Classification: UNCLASSIFIED
+  Sources Available From: Libraries
+  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  Last Revised: 11 January 1994
+
+schema:
+  fields:
+    - id: seq_no
+      type: integer
+    - id: page_no
+      type: integer
+    - id: battle_name
+      type: string
+    - id: start_date_min
+      type: date
+      description: "Start date (minimum date if there is uncertainty)"
+    - id: start_date_max
+      type: date
+      description: "Start date (maximum date if there is uncertainty)"
+    - id: end_date_min
+      type: date
+      description: "End date (minimum date if there is uncertainty)"
+    - id: end_date_min
+      type: date
+      description: "End date (maximum date if there is uncertainty)"
+    - id: nationality
+      type: string
+      description: "Nationality of force"
+    - id: number_engaged
+      type: integer
+      description: "Number engaged"
+    - id: casualties
+      type: integer
+      description: "Casualties"
+    - id: casualty_type
+      type: string
+      description: "Type of casualties. Either Killed or Bloody"
+    - id: notes
+      type: string

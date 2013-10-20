@@ -1,0 +1,187 @@
+- name: personnel-attrition-rates-in-historical-land-combat-operations
+  title: Personnel Attrition Rates in Historical Land Combat Operations
+  version: 1.0.0
+  licenses: 
+    - "id": "odc-pddl",
+      "url": "http://opendatacommons.org/licenses/pddl/"
+  sources: 
+    - name: |
+
+      "PAR Datadisk (Personnel Attrition Rates in Historical Land
+      Combat Operations) (Revised) Version 2.1 (Computer Diskette).",
+      May 31, 1994, DTIC ADM000368. 
+
+  resources:
+    - name: BWSHALL 
+      path: "data/BWSHALL.csv" 
+      description: |
+        
+        :Dataset: BWSH-1993 (BWSHALL)
+        :Data From: Militar-Historisches Kriegslexicon (1618-1905)
+        :Author: Gaston Bodart
+        :Organization: C.W. Stern, publisher
+        :Address: Vienna and Leipzig
+        :Publication Date: 1908
+        :Classification: UNCLASSIFIED
+        :Source Available From: Libraries
+        :Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+        :Last Revised: 15 November 1993
+
+      schema:
+        fields:
+          - id: seqno
+            description: "Observation id number"
+            type: integer
+          - id: item 
+            type: integer
+          - id: type
+            type: string
+          - id: battle_name
+            type: string
+          - id: start_date
+            type: date
+          - id: end_date
+            type: date
+          - id: days
+            description: |
+
+              Duration of battle in days.
+
+              Equal to ``end_date`` - ``start_date`` + 1.
+          - id: winner_a
+            description: |
+              ID of principal force component of the winner
+          - id: winner_b
+            description: |
+              ID of secondary force component of the winner
+          - id: loser_a
+            description: |
+              ID of secondary force component of the loser
+          - id: loser_b
+            description: |
+              ID of secondary force component of the loser
+          - id: winner_strength
+            description: |
+              Number of personnel in the winning force.
+          - id: loser_strength
+            description: |
+              Number of personnel in the losing force.
+          - id: winner_dead
+            description: |
+              Number of dead (winner)
+          - id: winner_wounded
+            description: |
+              Number of wounded (winner)
+          - id: winner_bloody
+            description: |
+              Number of bloody casualties (dead + wounded) (winner).
+          - id: winner_miapow
+            description: |
+              Number of missing in action or captured (winner)
+          - id: winner_casualties
+            description: |
+              Number of casualties (dead + wounded + MIA/POW) (winner).
+          - id: loser_strength
+            description: |
+              Number of personnel in the losing force.
+          - id: loser_dead
+            description: |
+              Number of dead (loser)
+          - id: loser_wounded
+            description: |
+              Number of wounded (loser)
+          - id: loser_bloody
+            description: |
+              Number of bloody casualties (dead + wounded) (loser).
+          - id: loser_miapow
+            description: |
+              Number of missing in action or captured (loser)
+          - id: loser_casualties
+            description: |
+              Number of casualties (dead + wounded + MIA/POW) (loser).
+    - name: PARMISC
+      path: "data/PARMISC.csv"
+      description: |
+    
+        Dataset: PARMISC-1993
+        Data From: Miscellaneous sources
+        Author: See Notes.
+        Organization: See Notes.
+        Address: See Notes.
+        Publication Date: 1993
+        Classification: UNCLASSIFIED
+        Sources Available From: Libraries
+        Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+        Last Revised: 10 January 1994
+
+        List of references
+
+        1.	"America's First Battles: 1776-1965," Charles E. Heller & William A. Stofft (eds), University Press of Kansas, 1986.
+        2.	"The Age of Voltaire," Will & Ariel Durant, Simon and Schuster, NY, 1965.
+        3.	"Dictionary of Battles," David Eggenberger, Thomas Y. Crowell Co., NY, 1967.
+        4.	"A Dictionary of Battles (1816-1976)," Brigadier Peter Young, Mayflower Books, NY, NY 10022, 1978.
+        5.	"Kursk: The Clash of Armor," Geoffrey Jukes, Ballatine's Illustrated History of WWII, Battle Book No. 7, Ballantine Books, NY, NY, 1968.
+        6. Strategy and Tactics, No 49, Mar/Apr 1975.
+        7.	"History of US Naval Operations in World War II," Samuel Eliot Morison, Little, Brown and Co, Boston, 1947-1960.
+        8. "Victory in Papua," Samuel Wilks, Office Chief of Military History, Dept. of the Army, (Green Book Series),
+
+    schema:
+      fields:
+        - id: seq_no
+          type: integer
+        - id: ref_no
+          description: "Reference number"
+          type: integer
+        - id: volume
+          type: integer
+        - id: page
+          type: integer
+        - id: battle_name
+          description: "Battle name"
+          type: string
+        - id: start_year
+          type: integer
+        - id: start_mo
+          type: integer
+        - id: start_da
+          type: integer
+        - id: end_year
+          type: integer
+        - id: end_mo
+          type: integer
+        - id: end_da
+          type: integer
+        - id: duration
+          type: number
+        - id: attacker_a
+          type: string
+        - id: attacker_b
+          type: string
+        - id: defender_a
+          type: string
+        - id: defender_b
+          type: string
+        - id: attacker_initial_strength
+          type: integer
+        - id: defender_initial_strength
+          type: integer
+        - id: attacker_dead
+          type: "dead (attacker)"
+        - id: attacker_wounded
+          type: "wounded (attacker)"
+        - id: attacker_bloody
+          type: "bloody casualties (dead + wounded) (attacker)"
+        - id: attacker_mia
+          type: "missing and captured (attacker)"
+        - id: attacker_casualties
+          type: "total casualties (dead + wounded + missing) (attacker)"
+        - id: defender_dead
+          type: "dead (defender)"
+        - id: defender_wounded
+          type: "wounded (defender)"
+        - id: defender_bloody
+          type: "bloody casualties (dead + wounded) (defender)"
+        - id: defender_mia
+          type: "missing and captured (defender)"
+        - id: defender_casualties
+          type: "total casualties (dead + wounded + missing) (defender)"

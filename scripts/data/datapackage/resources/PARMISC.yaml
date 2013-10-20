@@ -1,0 +1,84 @@
+path: "data/PARMISC.csv"
+description: |
+  Dataset: PARMISC-1993
+  Data From: Miscellaneous sources
+  Author: See Notes.
+  Organization: See Notes.
+  Address: See Notes.
+  Publication Date: 1993
+  Classification: UNCLASSIFIED
+  Sources Available From: Libraries
+  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  Last Revised: 10 January 1994
+  
+  List of references
+  
+  1.	"America's First Battles: 1776-1965," Charles E. Heller & William A. Stofft (eds), University Press of Kansas, 1986.
+  2.	"The Age of Voltaire," Will & Ariel Durant, Simon and Schuster, NY, 1965.
+  3.	"Dictionary of Battles," David Eggenberger, Thomas Y. Crowell Co., NY, 1967.
+  4.	"A Dictionary of Battles (1816-1976)," Brigadier Peter Young, Mayflower Books, NY, NY 10022, 1978.
+  5.	"Kursk: The Clash of Armor," Geoffrey Jukes, Ballatine's Illustrated History of WWII, Battle Book No. 7, Ballantine Books, NY, NY, 1968.
+  6. Strategy and Tactics, No 49, Mar/Apr 1975.
+  7.	"History of US Naval Operations in World War II," Samuel Eliot Morison, Little, Brown and Co, Boston, 1947-1960.
+  8. "Victory in Papua," Samuel Wilks, Office Chief of Military History, Dept. of the Army, (Green Book Series),
+
+schema:
+  fields:
+    - id: seq_no
+      type: integer
+    - id: ref_no
+      description: "Reference number"
+      type: integer
+    - id: volume
+      type: integer
+    - id: page
+      type: integer
+    - id: battle_name
+      description: "Battle name"
+      type: string
+    - id: start_year
+      type: integer
+    - id: start_mo
+      type: integer
+    - id: start_da
+      type: integer
+    - id: end_year
+      type: integer
+    - id: end_mo
+      type: integer
+    - id: end_da
+      type: integer
+    - id: duration
+      type: number
+    - id: attacker_a
+      type: string
+    - id: attacker_b
+      type: string
+    - id: defender_a
+      type: string
+    - id: defender_b
+      type: string
+    - id: attacker_initial_strength
+      type: integer
+    - id: defender_initial_strength
+      type: integer
+    - id: attacker_dead
+      type: "dead (attacker)"
+    - id: attacker_wounded
+      type: "wounded (attacker)"
+    - id: attacker_bloody
+      type: "bloody casualties (dead + wounded) (attacker)"
+    - id: attacker_mia
+      type: "missing and captured (attacker)"
+    - id: attacker_casualties
+      type: "total casualties (dead + wounded + missing) (attacker)"
+    - id: defender_dead
+      type: "dead (defender)"
+    - id: defender_wounded
+      type: "wounded (defender)"
+    - id: defender_bloody
+      type: "bloody casualties (dead + wounded) (defender)"
+    - id: defender_mia
+      type: "missing and captured (defender)"
+    - id: defender_casualties
+      type: "total casualties (dead + wounded + missing) (defender)"

@@ -1,0 +1,82 @@
+path: "data/BWSHALL.csv" 
+description: |
+  :Dataset: BWSH-1993 (BWSHALL)
+  :Data From: Militar-Historisches Kriegslexicon (1618-1905)
+  :Author: Gaston Bodart
+  :Organization: C.W. Stern, publisher
+  :Address: Vienna and Leipzig
+  :Publication Date: 1908
+  :Classification: UNCLASSIFIED
+  :Source Available From: Libraries
+  :Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  :Last Revised: 15 November 1993
+  
+schema:
+  fields:
+    - id: seqno
+      description: "Observation id number"
+      type: integer
+      - id: item 
+        type: integer
+      - id: type
+        type: string
+      - id: battle_name
+        type: string
+      - id: start_date
+        type: date
+      - id: end_date
+        type: date
+      - id: days
+        description: |
+          Duration of battle in days.
+      - id: winner_a
+        description: |
+          ID of principal force component of the winner
+      - id: winner_b
+        description: |
+          ID of secondary force component of the winner
+      - id: loser_a
+        description: |
+          ID of secondary force component of the loser
+      - id: loser_b
+        description: |
+          ID of secondary force component of the loser
+      - id: winner_strength
+        description: |
+          Number of personnel in the winning force.
+      - id: loser_strength
+        description: |
+          Number of personnel in the losing force.
+      - id: winner_dead
+        description: |
+          Number of dead (winner)
+      - id: winner_wounded
+        description: |
+          Number of wounded (winner)
+      - id: winner_bloody
+        description: |
+          Number of bloody casualties (dead + wounded) (winner).
+      - id: winner_miapow
+        description: |
+          Number of missing in action or captured (winner)
+      - id: winner_casualties
+        description: |
+          Number of casualties (dead + wounded + MIA/POW) (winner).
+      - id: loser_strength
+        description: |
+          Number of personnel in the losing force.
+      - id: loser_dead
+        description: |
+          Number of dead (loser)
+      - id: loser_wounded
+        description: |
+          Number of wounded (loser)
+      - id: loser_bloody
+        description: |
+          Number of bloody casualties (dead + wounded) (loser).
+      - id: loser_miapow
+        description: |
+          Number of missing in action or captured (loser)
+      - id: loser_casualties
+        description: |
+          Number of casualties (dead + wounded + MIA/POW) (loser).

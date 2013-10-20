@@ -1,0 +1,76 @@
+path: data/SP190.csv
+description: |
+  :Dataset: SP190-1964
+  :Data From (Title): Historical Data and Lanchester's Theory of Combat Part II
+  :Author: Helmbold, Robert L.
+  :Organization: Combat Operations Research Group.
+  :Address: Fort Belvoir, VA
+  :Publication Date: August 1964.
+  :Classification: UNCLASSIFIED.
+  :Source Available From: DTIC as AD-480 109.
+  :Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  :Spreadsheet last revised: 30 October 1993
+
+schema:
+  fields:
+    - id: seq_no
+      type: integer
+    - id: war
+      type: string
+      description: War, campaign or article
+    - id: battle_name
+      type: string
+      description: "Battle Name"
+    - id: ref_no
+      type: integer
+      description: |
+        Reference Number (as used in CORG-SP-190)
+    - id: year
+      type: integer
+      description: Year of the battle
+    - id: attacker_id
+      type: string
+      description: Attacker Id
+    - id: defender_id
+      type: string
+      description: Defender Id
+    - id: attacker_strength
+      type: integer
+      description: Initial attacker strength
+    - id: defender_strength
+      type: integer
+      description: Initial defender strength
+    - id: attacker_losses
+      type: integer
+      description: Attacker losses
+    - id: attacker_loss_type
+      type: string
+      description: |
+        Attacker loss type
+
+        - L = identified as "losses"
+        - M = killed, wounded and missing
+        - W = killed and wounded
+        - K = killed
+        - NA = not identified as to type
+        
+    - id: defender_losses
+      type: integer
+      description: Defender losses
+    - id: defender_loss_type
+      type: string
+      description: |
+        Defender loss type
+
+        - L = identified as "losses"
+        - M = killed, wounded and missing
+        - W = killed and wounded
+        - K = killed
+        - NA = not identified as to type
+
+    - id: battle_duration
+      type: number
+      description: Battle duration (in days)
+    - id: wina
+      type: boolean
+      description: Did the attacker win?
