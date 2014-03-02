@@ -30,7 +30,7 @@ The documentation for this data are contained in
 The original data were in an obsolete file format, ``WQ!`` which
 requires DOS + Quattro Pro (< 4.0) because it was compressed using
 [SQZ!](http://en.wikipedia.org/wiki/Synex_Systems_Corporation#SQZ.21).
- liberated the files from this format and converted them to something usable.
+I liberated the files from this format and converted them to something usable.
 
 Files
 ---------------
