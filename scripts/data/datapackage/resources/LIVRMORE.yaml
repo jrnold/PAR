@@ -1,0 +1,59 @@
+path: data/LIVRMORE.csv
+description: >-
+  :Data From (Title): Numbers and Losses in the Civil War in America, 1861-65.
+  :Author: Livermore, Thomas L.
+  :Organization: Kraus Reprint Co.
+  :Address: Milwood, NY.
+  :Publication Date: 1977.
+  :Classification: UNCLASSIFIED.
+  :Source Available From: Libraries.
+  :Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  :Spreadsheet last revised: 30 October 1993
+  Notes:
+    - "When the number of KIA is not separately available, the values under WIA are KIA + WIA."
+    - "ATK ID CODE = 2 if Union attacked, 1 if Confederates attacked."
+    - "WINA = +1 if attacker won, -1 if defender won."
+schema:
+  fields:
+    - id: seq_no
+      description: battle id
+      type: integer
+    - id: battle_name
+      description: battle name
+      type: string
+    - id: start_date
+      description: Start date
+      type: date
+    - id: end_date
+      description: End date
+      type: date
+    - id: attacker
+      description: Attacking side ("UNION", "CONFEDERATE")
+      type: string
+    - id: attacker_kia
+      description: Number of attacker killed
+      type: integer
+    - id: attacker_wia
+      description: Number of attacker wounded
+      type: integer
+    - id: attacker_kw
+      description: Number of attacker killed and wounded
+      type: integer
+    - id: attacker_miapow
+      description: Number of attacker missing or captured
+      type: integer
+    - id: defender_wia
+      description: Number of defender wounded
+      type: integer
+    - id: defender_kw
+      description: Number of defender killed and wounded
+      type: integer
+    - id: defender_miapow
+      description: Number of defender missing or captured
+      type: integer
+    - id: wina
+      description: Equal to 1 if attacker won, and -1 if defender wone.
+      type: integer
+    - id: win_side
+      description: Winning side
+      type: string

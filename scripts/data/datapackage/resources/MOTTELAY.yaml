@@ -18,8 +18,8 @@ schema:
       description: Page number
       type: integer
     - id: date
-      description: Battle date (%d %B %Y)
-      type: string
+      description: Battle date
+      type: date
     - id: event
       description: Event type (Skirmish, Engagement, Action, etc.)
       type: string
