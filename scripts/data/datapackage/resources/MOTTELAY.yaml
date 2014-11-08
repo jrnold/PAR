@@ -1,0 +1,77 @@
+path: data/MOTTELAY.csv
+description: >-
+ :Data From (Title): The Soldier in Our Civil War: Columbian Memorial Edition.
+ :Author: Mottelay, Paul F., and T. Campbell-Copeland.
+ :Organization: Stanley-Bradley Publishing Co.
+ :Address: Atlanta and New York.
+ :Publication Date: 1893.
+ :Classification: UNCLASSIFIED.
+ :Source Available From: Libraries.
+ :Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+ :Spreadsheet last revised: 4 November 1993
+schema:
+  fields:
+    - id: no
+      description: Battle number (identifier)
+      type: integer
+    - id: page
+      description: Page number
+      type: integer
+    - id: date
+      description: Battle date (%d %B %Y)
+      type: string
+    - id: event
+      description: Event type (Skirmish, Engagement, Action, etc.)
+      type: string
+    - id: location
+      description: Location of the battle
+      type: string
+    - id: duration
+      type: number
+      description: Duration of the battle, in hours.
+    - id: federal_force
+      type: integer
+      description: Size in personnel of the federal (Union) force
+    - id: confed_force
+      type: integer
+      description: Size in personnel of the Confederate force
+    - id: federal_killed
+      type: integer
+      description: Number of Union killed
+    - id: confed_killed
+      type: integer
+      description: Number of Confederate killed
+    - id: federal_wounded
+      type: integer
+      description: Number of Union wounded
+    - id: confed_wounded
+      type: integer
+      description: Number of Confederate wounded
+    - id: federal_kw
+      type: integer
+      description: Number of Union killed or wounded
+    - id: confed_kw
+      type: integer
+      description: Number of Confederate killed or wounded
+    - id: federal_pow
+      type: integer
+      description: Number of Union captured
+    - id: confed_pow
+      type: integer
+      description: Number of Confederate captured
+    - id: federal_mia
+      type: integer
+      description: Number of Union missing
+    - id: confed_mia
+      type: integer
+      description: Number of Confederate missing
+    - id: federal_kwcmia
+      type: integer
+      description: Number of Union casualties, all types (killed, wounded, missing, captured)
+    - id: confed_kwcmia
+      type: integer
+      description: Number of Confederate casualties, all types (killed, wounded, missing, captured)
+
+      
+      
+      
