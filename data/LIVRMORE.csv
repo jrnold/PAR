@@ -1,4 +1,4 @@
-seq_no,battle_name,start_date,end_date,attacker,attacker_str,attacker_kia,attacker_wia,attacker_kw,attaker_miapow,defender_str,defender_kia,defender_wia,defender_kw,defender_miapow,wina,win_side
+seq_no,battle_name,start_date,end_date,attacker,attacker_str,attacker_kia,attacker_wia,attacker_kw,attacker_miapow,defender_str,defender_kia,defender_wia,defender_kw,defender_miapow,wina,win_side
 1,BULL RUN,1961-07-21,1961-07-21,UNION,28452,481,1011,1492,1216,32232,387,1582,1969,12,-1,CONFEDERATE
 2,WILSON'S CREEK,1961-08-10,1961-08-10,UNION,5400,223,721,944,291,11600,257,900,1157,27,-1,CONFEDERATE
 3,FORT DONELSON,1962-02-12,1962-02-16,UNION,27000,500,2108,2608,224,21000,,2000,2000,14623,1,UNION
