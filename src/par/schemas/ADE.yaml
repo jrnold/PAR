@@ -1,0 +1,34 @@
+source: ADE
+dataset: ADE-1992
+export: ADE.csv
+citation_rows: [1, 9]
+notes_rows: [411, 435]
+tables:
+  - name: ade
+    title: Ardennes Campaign division-level engagements, 16 Dec 1944 to 16 Jan 1945
+    rows: [17, 409]
+    keys: [seq_no]
+    missing: ["#VALUE!"]
+    checks:
+      - {name: day_in_range, expr: "day between 1 and 32"}
+      - {name: bloody_le_tbc_german, expr: "german_bloody <= german_tbc + 0.5"}
+      - {name: bloody_le_tbc_allied, expr: "allied_bloody <= allied_tbc + 0.5"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, day, integer, "Days elapsed, counting 16 December 1944 as day 1"]
+      - {col: 2, name: date, type: date, description: Calendar date, format: "%b%d", year_by_month: {Dec: 1944, Jan: 1945}}
+      - [3, side, string, "Side of the base unit: A (American), G (German), or B (British)"]
+      - [4, base_unit, string, Base unit used to define unit matchups]
+      - [5, german_strength, number, German initial strength (x0)]
+      - [6, allied_strength, number, Allied initial strength (y0)]
+      - [7, german_tbc, number, German total battle casualties (Cx)]
+      - [8, allied_tbc, number, Allied total battle casualties (Cy)]
+      - [9, german_bloody, number, German bloody casualties (Bx)]
+      - [10, allied_bloody, number, Allied bloody casualties (By)]
+      - [11, german_other_changes, number, German other changes in personnel strength (Rx)]
+      - [12, allied_other_changes, number, Allied other changes in personnel strength (Ry)]
+      - [13, advance_km, number, "Distance opposed advance by the Allies in km; negative if the Allies were driven back"]
+      - [14, force_ratio, number, Force ratio of Allied to German strength (derived in the spreadsheet)]
+      - [15, adv_bloody, number, ADV statistic from bloody casualties favoring the Allies (derived in the spreadsheet)]
+      - [16, ln_fer_bloody, number, ln(FER) from bloody casualties favoring the Allies (derived in the spreadsheet)]
+      - [17, adv_tbc, number, ADV statistic from total battle casualties favoring the Allies (derived in the spreadsheet)]

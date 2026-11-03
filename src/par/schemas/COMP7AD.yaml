@@ -1,0 +1,29 @@
+source: COMP7AD
+dataset: COMPTON-1993 (COMP7AD)
+export: COMP7AD.csv
+citation_rows: [1, 10]
+tables:
+  - name: comp7ad
+    title: US 7th Armored Division casualties by sub-unit and day
+    description: >-
+      "--" in the source becomes null. Daily or grand total rows are removed and used as control
+      totals; the sequence numbers those rows carried are therefore absent from this table.
+    rows: [15, 949]
+    keys: [seq_no]
+    summary_rows:
+      match: {3: [Grand Total], 5: [TOTAL, GRAND TOTAL]}
+      columns: {6: kia, 7: wia, 8: mia, 9: non_battle, 10: total}
+    checks:
+      - {name: total_sum, expr: "coalesce(kia,0) + coalesce(wia,0) + coalesce(mia,0) + coalesce(non_battle,0) = total"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, division, string, Division name]
+      - [2, date, date, Date]
+      - [3, sub_unit_1, string, First echelon below division]
+      - [4, sub_unit_2, string, Second echelon below division]
+      - [5, sub_unit_3, string, Third echelon below division]
+      - [6, kia, integer, Killed in action]
+      - [7, wia, integer, Wounded in action]
+      - [8, mia, integer, Missing in action]
+      - [9, non_battle, integer, Non-battle injured]
+      - [10, total, integer, Total losses]

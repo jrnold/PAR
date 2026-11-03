@@ -1,0 +1,30 @@
+source: KRIVO
+dataset: KRIVO-1993
+export: KRIVO.csv
+citation_rows: [1, 12]
+notes_rows: [201, 222]
+tables:
+  - name: krivo
+    title: Soviet strategic operations on the Eastern Front, 1941 to 1945
+    rows: [19, 198]
+    keys: [seq_no]
+    missing: ["--", "#VALUE!"]
+    checks:
+      - {name: dates_ordered, expr: "start_date <= end_date"}
+      - {name: total_sum, expr: "permanent_losses + medical_losses = total_losses"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, page, integer, Source page]
+      - [2, operation_type, string, Operation type in the source]
+      - [3, operation_name, string, Operation name]
+      - [4, start_date, date, Start date]
+      - [5, end_date, date, End date]
+      - [6, unit_name, string, Major Soviet unit]
+      - [7, initial_strength, number, Initial strength]
+      - [8, permanent_losses, number, Permanent losses]
+      - [9, medical_losses, number, Medical losses]
+      - [10, total_losses, number, Total losses]
+      - [11, losses_per_day, number, Average total losses per day]
+      - [12, losses_per_1000_per_day, number, Average total losses per 1000 men per day]
+      - [13, medical_to_permanent, number, Ratio of medical to permanent losses]
+      - [14, operation_count, integer, Index numbering the separate operations]

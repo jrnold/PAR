@@ -1,0 +1,64 @@
+source: PARMISC
+dataset: PARMISC-1993
+export: PARMISC.csv
+citation: |
+  Dataset: PARMISC-1993
+  Data From: Miscellaneous sources
+  Publication Date: 1993
+  Classification: UNCLASSIFIED
+  Sources Available From: Libraries
+  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  Last Revised: 10 January 1994
+notes: |
+  References (ref_no):
+  1. "America's First Battles: 1776-1965," Charles E. Heller & William A. Stofft (eds), University Press of Kansas, 1986.
+  2. "The Age of Voltaire," Will & Ariel Durant, Simon and Schuster, NY, 1965.
+  3. "Dictionary of Battles," David Eggenberger, Thomas Y. Crowell Co., NY, 1967.
+  4. "A Dictionary of Battles (1816-1976)," Brigadier Peter Young, Mayflower Books, NY, NY 10022, 1978.
+  5. "Kursk: The Clash of Armor," Geoffrey Jukes, Ballantine's Illustrated History of WWII, Battle Book No. 7, Ballantine Books, NY, NY, 1968.
+  6. Strategy and Tactics, No 49, Mar/Apr 1975.
+  7. "History of US Naval Operations in World War II," Samuel Eliot Morison, Little, Brown and Co, Boston, 1947-1960.
+  8. "Victory in Papua," Samuel Wilks, Office Chief of Military History, Dept. of the Army, (Green Book Series).
+tables:
+  - name: parmisc
+    title: Battles from miscellaneous sources, 1741 to 1965
+    rows: [2, 210]
+    keys: [seq_no]
+    checks:
+      - {name: attacker_bloody, expr: "attacker_dead + attacker_wounded = attacker_bloody"}
+      - {name: defender_bloody, expr: "defender_dead + defender_wounded = defender_bloody"}
+      - {name: attacker_losses, expr: "attacker_bloody + attacker_mia = attacker_losses"}
+      - {name: defender_losses, expr: "defender_bloody + defender_mia = defender_losses"}
+      - {name: attacker_loss_le_strength, expr: "attacker_losses <= attacker_strength"}
+      - {name: defender_loss_le_strength, expr: "defender_losses <= defender_strength"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, ref_no, integer, Reference number (see notes)]
+      - [2, volume, string, Source volume]
+      - [3, page, string, Source page]
+      - [4, battle_name, string, Battle name]
+      - [5, start_year, integer, Start year]
+      - [6, start_month, integer, Start month]
+      - [7, start_day, integer, Start day]
+      - [8, end_year, integer, End year]
+      - [9, end_month, integer, End month]
+      - [10, end_day, integer, End day]
+      - [11, duration_days, number, Duration in days]
+      - [12, attacker_a, string, Principal force component of the attacker]
+      - [13, attacker_b, string, Secondary force component of the attacker]
+      - [14, defender_a, string, Principal force component of the defender]
+      - [15, defender_b, string, Secondary force component of the defender]
+      - [16, attacker_strength, number, Attacker initial strength]
+      - [17, defender_strength, number, Defender initial strength]
+      - [18, attacker_dead, number, Attacker dead]
+      - [19, attacker_wounded, number, Attacker wounded]
+      - [20, attacker_bloody, number, Attacker bloody losses]
+      - [21, attacker_mia, number, Attacker missing or captured]
+      - [22, attacker_losses, number, Attacker total losses]
+      - [23, defender_dead, number, Defender dead]
+      - [24, defender_wounded, number, Defender wounded]
+      - [25, defender_bloody, number, Defender bloody losses]
+      - [26, defender_mia, number, Defender missing or captured]
+      - [27, defender_losses, number, Defender total losses]
+      - [28, victor, string, "Victorious side: A (attacker) or D (defender)"]
+      - [29, notes, string, Notes]

@@ -1,0 +1,53 @@
+source: CEC
+dataset: CEC-1993
+export: CEC.csv
+citation_rows: [1, 10]
+notes_rows: [99, 377]
+tables:
+  - name: cec
+    title: Contingency operations, 1946 to 1982
+    description: Coded values are defined in the notes copied from the spreadsheet.
+    rows: [16, 96]
+    keys: [seq_no]
+    missing: ["?", "N/A"]
+    checks:
+      - {name: dates_ordered, expr: "start_date <= end_date"}
+      - {name: tbc_sum, expr: "kia + wia + cmia = battle_casualties"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, code_no, integer, Code number used by the source]
+      - [2, name, string, Name of the operation]
+      - [3, start_date, date, Start date]
+      - [4, end_date, date, End date]
+      - [5, duration_days, number, Duration in days]
+      - [6, description, string, Type of contingency (see notes)]
+      - [7, attacker_advance_km, number, Attacker advance in km]
+      - [8, side1_id, string, Side 1 ID]
+      - [9, side1_participants, string, Side 1 participants]
+      - [10, side1_force, string, Side 1 force]
+      - [11, side1_insertion, string, Side 1 insertion method code]
+      - [12, side1_unit_type, string, Side 1 unit type code]
+      - [13, side1_posture, string, Side 1 posture code]
+      - [14, side2_id, string, Side 2 ID]
+      - [15, side2_participants, string, Side 2 participants]
+      - [16, side2_force, string, Side 2 force]
+      - [17, side2_insertion, string, Side 2 insertion method code]
+      - [18, side2_unit_type, string, Side 2 unit type code]
+      - [19, side2_posture, string, Side 2 posture code]
+      - [20, terrain, string, Terrain code]
+      - [21, weather, string, Weather code]
+      - [22, air_superiority, string, Air superiority code]
+      - [23, surprise_achieved, string, Whether surprise was achieved]
+      - [24, surpriser_side, string, Side that inflicted surprise]
+      - [25, surprise_level, string, Surprise level code]
+      - [26, casualties_for_side, string, Side to which the strength and casualty columns apply]
+      - [27, personnel_strength, number, Personnel strength]
+      - [28, kia, number, Killed in action]
+      - [29, wia, number, Wounded in action]
+      - [30, cmia, number, Captured or missing in action]
+      - [31, other_dead, number, Other dead]
+      - [32, other_injured, number, Other injured]
+      - [33, dnbi, number, Diseased and non-battle injured]
+      - [34, battle_casualties, number, Total battle casualties]
+      - [35, total_casualties, number, Total casualties]
+      - [36, notes, string, Note number (see notes)]

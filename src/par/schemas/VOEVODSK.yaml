@@ -1,0 +1,84 @@
+source: VOEVODSK
+dataset: VOEVODSK-1993
+export: VOEVODSK.csv
+citation_rows: [1, 10]
+tables:
+  - name: voevodsk_vietnam
+    title: US strength and cumulative battle losses, Vietnam War
+    rows: [16, 39]
+    keys: [seq_no]
+    missing: ["#DIV/0!"]
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [2, date, date, Date]
+      - [3, army_strength, number, US Army strength in theater]
+      - [4, dod_strength, number, DOD strength in theater]
+      - [5, army_casualties, number, US Army battle casualties]
+      - [6, dod_casualties, number, DOD battle casualties]
+      - [7, army_deaths, number, US Army battle deaths]
+      - [8, dod_deaths, number, DOD battle deaths]
+      - [9, army_cas_death_ratio, number, US Army casualty to death ratio]
+      - [10, dod_cas_death_ratio, number, DOD casualty to death ratio]
+  - name: voevodsk_korea
+    title: US strength and cumulative battle losses, Korean War
+    rows: [46, 61]
+    keys: [seq_no]
+    columns: &us
+      - [0, seq_no, integer, Sequence number]
+      - [2, date, date, Date]
+      - [3, army_strength, number, US Army strength]
+      - [4, army_casualties, number, US Army battle casualties]
+      - [5, army_deaths, number, US Army battle deaths]
+      - [6, cas_death_ratio, number, Casualty to death ratio]
+  - name: voevodsk_wwii
+    title: US strength and cumulative battle losses, World War II
+    rows: [68, 75]
+    keys: [seq_no]
+    columns: *us
+  - name: voevodsk_wwi_us
+    title: US strength and cumulative battle deaths, World War I
+    rows: [82, 90]
+    keys: [seq_no]
+    missing: ["--"]
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [2, date, date, Date]
+      - [3, army_strength, number, US Army strength in theater]
+      - [4, army_deaths, number, US Army battle deaths]
+  - name: voevodsk_wwi_mixed
+    title: British, French, and German cumulative losses, World War I
+    rows: [99, 120]
+    keys: [seq_no]
+    missing: ["--"]
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [2, date, date, Date]
+      - [3, british_strength, number, British strength in theater]
+      - [4, british_kia_wia, number, British KIA plus WIA]
+      - [5, british_kia, number, British KIA]
+      - [6, german_kia_wia, number, German KIA plus WIA]
+      - [7, german_kia, number, German KIA]
+      - [8, french_battle_losses, number, French battle losses]
+      - [9, british_battle_losses, number, British battle losses]
+      - [10, german_losses_vs_french, number, German battle losses against the French]
+      - [11, german_losses_vs_british, number, German battle losses against the British]
+  - name: voevodsk_civil_war
+    title: Union and Confederate strength and cumulative losses, US Civil War
+    description: >-
+      The sheet stores these dates as 1961 to 1965 because spreadsheets of the time couldn't hold
+      dates before 1900. This table subtracts 100 years to give 1861 to 1865.
+    rows: [127, 145]
+    keys: [seq_no]
+    missing: ["--"]
+    date_year_offset: -100
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [2, date, date, Date]
+      - [3, union_strength, number, Union strength]
+      - [4, confederate_strength, number, Confederate strength]
+      - [5, union_casualties, number, Union battle casualties]
+      - [6, confederate_casualties, number, Confederate battle casualties]
+      - [7, union_deaths, number, Union battle deaths]
+      - [8, confederate_deaths, number, Confederate battle deaths]
+      - [9, union_cas_death_ratio, number, Union casualty to death ratio]
+      - [10, confederate_cas_death_ratio, number, Confederate casualty to death ratio]

@@ -1,0 +1,45 @@
+source: REISTERK
+dataset: REISTERK-1986
+export: REISTERK.csv
+citation_rows: [1, 11]
+notes_rows: [123, 141]
+tables:
+  - name: reisterk_division
+    title: Korean War US division-level operations
+    rows: [18, 60]
+    keys: [seq_no]
+    checks:
+      - {name: dates_ordered, expr: "start_date <= end_date"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, page, integer, Source page]
+      - [2, operation_type, string, Operation type in the source]
+      - [3, operation_name, string, Operation name]
+      - [4, start_date, date, Start date]
+      - [5, end_date, date, End date]
+      - [6, unit_type, string, Type of unit]
+      - [7, units, integer, Number of units]
+      - [8, unit_days, integer, Number of unit-days]
+      - [9, mean_unit_strength, number, Mean unit strength]
+      - [10, kia, number, Killed in action]
+      - [11, wia_cro, number, Wounded carded for record only]
+      - [12, wia_admitted, number, Wounded admitted to hospital]
+  - name: reisterk_regiment
+    title: Korean War US regimental-level operations
+    rows: [69, 120]
+    keys: [seq_no]
+    checks:
+      - {name: wia_kia_ratio, expr: "abs((wia_cro + wia_admitted) / kia - wia_kia_ratio) < 0.01"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, page, integer, Source page]
+      - [2, operation_type, string, Operation type in the source]
+      - [3, tactical_action, string, Tactical action]
+      - [4, unit_type, string, Type of unit]
+      - [5, units, integer, Number of units]
+      - [6, unit_days, integer, Number of unit-days]
+      - [7, mean_unit_strength, number, Mean unit strength]
+      - [8, kia, number, Killed in action]
+      - [9, wia_cro, number, Wounded carded for record only]
+      - [10, wia_admitted, number, Wounded admitted to hospital]
+      - [11, wia_kia_ratio, number, Ratio of wounded to killed]

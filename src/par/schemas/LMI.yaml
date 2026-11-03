@@ -1,0 +1,29 @@
+source: LMI
+dataset: LMI-1989
+fixed_width: {files: [LMI.001, LMI.002, LMI.003]}
+citation: |
+  Kuhn, George W. S., "Ground Forces Battle Casualty Rate Patterns: The Empirical Evidence,"
+  Logistics Management Institute Report FP703TR1, September 1989, 270 pp, UNCLASSIFIED.
+tables:
+  - name: lmi
+    title: US strengths and casualties in Northwest Europe, 15 Jun 1944 to 30 Apr 1945
+    description: >-
+      The diskette README gives KIA, WIA, and CMIA widths of 5, but the records use 6, which is
+      what makes the 54-character record add up. The catalog says missing numbers are coded -99,
+      which are null here.
+    keys: [source_row]
+    checks:
+      - {name: nonnegative_casualties, expr: "kia >= 0 and wia >= 0 and cmia >= 0"}
+    columns:
+      - {width: 8, name: date, type: date, description: Date, format: "%Y%m%d"}
+      - [5, unit, string, "Element type: INF D, ARM D, ABN D, HQ/SE, or OTHER"]
+      - [3, division, integer, Division number]
+      - [2, corps, integer, Corps number]
+      - [2, army, integer, Army number]
+      - [2, army_group, integer, Army group number]
+      - {width: 6, name: kia, type: integer, description: Killed in action, missing: ["-99"]}
+      - {width: 6, name: wia, type: integer, description: Wounded in action, missing: ["-99"]}
+      - {width: 6, name: cmia, type: integer, description: Captured or missing in action, missing: ["-99"]}
+      - {width: 6, name: authorized, type: integer, description: Authorized personnel strength, missing: ["-99"]}
+      - {width: 6, name: assigned, type: integer, description: Assigned personnel strength, missing: ["-99"]}
+      - [2, version, string, Version code]

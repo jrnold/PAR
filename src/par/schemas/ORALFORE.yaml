@@ -1,0 +1,30 @@
+source: ORALFORE
+dataset: ORALFORE-1972
+export: ORALFORE.csv
+citation_rows: [1, 10]
+notes_rows: [378, 403]
+tables:
+  - name: oralfore
+    title: Opposed rates of advance of large forces in Europe, 1940 to 1944
+    description: Coded values are defined in the notes. NR (not recorded) and similar codes stay as strings in coded columns and become null in numeric ones.
+    rows: [16, 376]
+    keys: [source_row]
+    columns:
+      - [1, seq_no, integer, Sequence number (one row has none)]
+      - [3, operation, string, Operation name or phase]
+      - [5, location, string, "Route, locale, sector, or other location information"]
+      - [7, date, date, Date]
+      - {col: 9, name: distance_km, type: number, description: Distance in km, missing: [NR, P, U, NA, NU]}
+      - {col: 11, name: weather_armor, type: number, description: Suitability of weather for armor, missing: [NR, P, U, NA, NU]}
+      - {col: 13, name: weather_air, type: number, description: Suitability of weather for air, missing: [NR, P, U, NA, NU]}
+      - {col: 15, name: terrain, type: number, description: Terrain mobility, missing: [NR, P, U, NA, NU]}
+      - {col: 17, name: roadnet, type: number, description: Roadnet suitability, missing: [NR, P, U, NA, NU]}
+      - [19, obstacles, string, Obstacles to advance (coded)]
+      - [21, opposition_intensity, string, Intensity of opposition (coded)]
+      - [23, attacker_condition, string, Attacker readiness condition (coded)]
+      - [25, attacker_mission, string, Attacker posture or mission (coded)]
+      - {col: 27, name: attacker_casualty_pct, type: number, description: Attacker casualties in percent, missing: [NR, P, U, NA, NU]}
+      - [29, defender_condition, string, Defender readiness condition (coded)]
+      - [31, defender_mission, string, Defender posture or mission (coded)]
+      - {col: 33, name: defender_casualty_pct, type: number, description: Defender casualties in percent, missing: [NR, P, U, NA, NU]}
+      - [35, comments, string, Comments]

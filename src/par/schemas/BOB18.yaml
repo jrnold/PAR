@@ -1,0 +1,34 @@
+source: BOB18
+dataset: BOB18-1993
+export: BOB18.csv
+citation_rows: [1, 11]
+tables:
+  - name: bob18
+    title: Battle of Britain air combat, 13 Aug to 6 Sep 1940
+    rows: [19, 36]
+    keys: [seq_no]
+    controls:
+      - {row: 38, label: Totals, columns: {3: attack_sorties, 4: defense_sorties, 5: luftwaffe_losses, 6: fighter_command_losses, 7: duration_days}}
+    checks:
+      - {name: surviving_attacker, expr: "attack_sorties - luftwaffe_losses = surviving_attacker"}
+      - {name: surviving_defender, expr: "defense_sorties - fighter_command_losses = surviving_defender"}
+    columns:
+      - [1, seq_no, integer, Sequence number]
+      - [2, date, date, Calendar date]
+      - [3, attack_sorties, integer, Luftwaffe attack sorties (x0)]
+      - [4, defense_sorties, integer, Fighter Command defense sorties (y0)]
+      - [5, luftwaffe_losses, integer, Luftwaffe losses (Cx)]
+      - [6, fighter_command_losses, integer, Fighter Command losses (Cy)]
+      - [7, duration_days, integer, Duration in days (T)]
+      - [9, force_ratio, number, Force ratio x0/y0]
+      - [10, surviving_attacker, integer, Surviving attacker force (x)]
+      - [11, surviving_defender, integer, Surviving defender force (y)]
+      - [12, surviving_fraction_attacker, number, Attacker surviving fraction (a)]
+      - [13, surviving_fraction_defender, number, Defender surviving fraction (d)]
+      - [14, casualty_fraction_attacker, number, Attacker casualty fraction (fx)]
+      - [15, casualty_fraction_defender, number, Defender casualty fraction (fy)]
+      - [16, activity_ratio, number, Activity ratio D/A]
+      - [17, mu, number, Lanchester mu parameter]
+      - [18, defender_advantage, number, "Defender's advantage, V = ln(mu)"]
+      - [19, bitterness, number, Bitterness (epsilon)]
+      - [20, intensity_per_day, number, Intensity per day (lambda)]

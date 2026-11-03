@@ -1,0 +1,72 @@
+source: BODASHIP
+dataset: BODASHIP-1993
+export: BODASHIP.csv
+citation: |
+  Dataset: BODASHIP-1993
+  Data From (Title): Militar-Historisches Kriegs-Lexicon (1618-1905)
+  Author: Gaston Bodart
+  Organization: C.W. Stern
+  Address: Vienna and Leipzig
+  Publication Date: 1908
+  Classification: UNCLASSIFIED
+  Source Available From: Libraries
+  Prepared By: Robert L. Helmbold, US Army Concepts Analysis Agency
+  Last Revised: 1 December 1993
+tables:
+  - name: bodaship
+    title: Naval engagements, 1638 to 1905
+    description: BODASHIP.WQ! is listed in the diskette README but isn't in this repository, so this table can't be traced to an original file.
+    rows: [2, 121]
+    keys: [seq_no]
+    checks:
+      - {name: winner_bloody, expr: "winner_dead + winner_wounded = winner_bloody"}
+      - {name: loser_bloody, expr: "loser_dead + loser_wounded = loser_bloody"}
+      - {name: winner_losses, expr: "winner_bloody + winner_mia_pow = winner_losses"}
+      - {name: loser_losses, expr: "loser_bloody + loser_mia_pow = loser_losses"}
+      - {name: winner_loss_le_strength, expr: "winner_losses <= winner_personnel"}
+      - {name: loser_loss_le_strength, expr: "loser_losses <= loser_personnel"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, page, integer, Source page]
+      - [2, item, integer, Item number on the page]
+      - [3, battle_type, string, Type of battle in the source]
+      - [4, battle_name, string, Battle name]
+      - [5, start_year, integer, Start year]
+      - [6, start_month, integer, Start month]
+      - [7, start_day, integer, Start day]
+      - [8, end_year, integer, End year]
+      - [9, end_month, integer, End month]
+      - [10, end_day, integer, End day]
+      - [11, duration_days, number, Duration in days]
+      - [12, winner_a, string, Principal force component of the winner]
+      - [13, winner_b, string, Secondary force component of the winner]
+      - [14, loser_a, string, Principal force component of the loser]
+      - [15, loser_b, string, Secondary force component of the loser]
+      - [16, winner_personnel, number, Winner initial personnel]
+      - [17, winner_main_ships, number, Winner main ships]
+      - [18, winner_other_ships, number, Winner other ships]
+      - [19, winner_cannon, number, Winner cannon]
+      - [20, loser_personnel, number, Loser initial personnel]
+      - [21, loser_main_ships, number, Loser main ships]
+      - [22, loser_other_ships, number, Loser other ships]
+      - [23, loser_cannon, number, Loser cannon]
+      - [24, winner_dead, number, Winner dead]
+      - [25, winner_wounded, number, Winner wounded]
+      - [26, winner_bloody, number, Winner bloody losses]
+      - [27, winner_mia_pow, number, Winner missing or captured]
+      - [28, winner_losses, number, Winner total personnel losses]
+      - [29, winner_main_ship_losses, number, Winner main ships lost]
+      - [30, winner_other_ship_losses, number, Winner other ships lost]
+      - [31, winner_cannon_losses, number, Winner cannon lost]
+      - [32, loser_dead, number, Loser dead]
+      - [33, loser_wounded, number, Loser wounded]
+      - [34, loser_bloody, number, Loser bloody losses]
+      - [35, loser_mia_pow, number, Loser missing or captured]
+      - [36, loser_losses, number, Loser total personnel losses]
+      - [37, loser_main_ship_losses, number, Loser main ships lost]
+      - [38, loser_other_ship_losses, number, Loser other ships lost]
+      - [39, loser_cannon_losses, number, Loser cannon lost]
+      - [40, winner_loss_fraction, number, Winner bloody loss fraction]
+      - [41, loser_loss_fraction, number, Loser bloody loss fraction]
+      - [42, winner_tbc_fraction, number, Winner total battle casualty fraction]
+      - [43, loser_tbc_fraction, number, Loser total battle casualty fraction]

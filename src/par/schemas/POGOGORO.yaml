@@ -1,0 +1,32 @@
+source: POGOGORO
+dataset: POGOGORO-1993
+export: POGOGORO.csv
+citation_rows: [1, 11]
+notes_rows: [28, 30]
+tables:
+  - name: pogogoro
+    title: Pogoreloye-Gorodische operation, 4 to 12 Aug 1942
+    rows: [16, 24]
+    keys: [seq_no]
+    missing: [".."]
+    controls:
+      - {row: 26, label: TOTALS, columns: {10: soviet_gain, 11: soviet_loss_calc, 15: german_gain, 16: german_loss_calc}}
+    checks:
+      - {name: soviet_balance, expr: "soviet_start + soviet_gain - soviet_loss_calc = soviet_final"}
+      - {name: german_balance, expr: "german_start + german_gain - german_loss_calc = german_final"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - {col: 1, name: date, type: date, description: Date (the sheet records the day of August 1942), day_of: "1942-08"}
+      - [2, soviet_strength, number, Soviet strength]
+      - [3, soviet_losses, number, Soviet losses]
+      - [5, german_strength, number, German strength]
+      - [6, german_losses, number, German losses]
+      - [7, notes, string, Note marker]
+      - [9, soviet_start, number, Soviet start strength]
+      - [10, soviet_gain, number, Soviet gains]
+      - [11, soviet_loss_calc, number, Soviet loss used in the balance]
+      - [12, soviet_final, number, Soviet final strength]
+      - [14, german_start, number, German start strength]
+      - [15, german_gain, number, German gains]
+      - [16, german_loss_calc, number, German loss used in the balance]
+      - [17, german_final, number, German final strength]

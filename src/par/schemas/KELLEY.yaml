@@ -1,0 +1,30 @@
+source: KELLEY
+dataset: KELLEY-1977
+export: KELLEY.csv
+citation_rows: [1, 11]
+tables:
+  - name: kelley_korea
+    title: Korean War air combat engagements, 1951 to 1953
+    description: Fifth Air Force Intelligence Summaries. The README's "19 August 1957" start date is a typo in the diskette README; the data start in 1951.
+    rows: [20, 334]
+    keys: [seq_no]
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, date, date, Date]
+      - [2, us_aircraft, integer, US aircraft engaged]
+      - [3, nk_aircraft, integer, North Korean aircraft engaged]
+      - [4, us_losses, number, US aircraft lost (fractions as in the source)]
+      - [5, nk_losses, number, North Korean aircraft lost (fractions as in the source)]
+  - name: kelley_vietnam
+    title: Vietnam War air combat engagements
+    description: Project Red Baron, USAF Tactical Fighter Weapons Center.
+    rows: [345, 482]
+    keys: [seq_no]
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, us_type, string, US aircraft type]
+      - [2, nvn_type, string, North Vietnamese aircraft type]
+      - [3, us_aircraft, integer, US aircraft engaged]
+      - [4, nvn_aircraft, integer, North Vietnamese aircraft engaged]
+      - [5, us_losses, number, US aircraft lost (fractions as in the source)]
+      - [6, nvn_losses, number, North Vietnamese aircraft lost (fractions as in the source)]

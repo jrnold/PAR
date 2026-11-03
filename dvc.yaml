@@ -1,0 +1,88 @@
+stages:
+  # Stages depend on the runtime packages only, so adding a dev tool doesn't make them stale: this
+  # stage reruns, its output is unchanged, and DVC skips everything downstream.
+  runtime-lock:
+    cmd: uv export --no-dev --frozen --no-header --no-emit-project -o
+      requirements.lock
+    deps:
+    - uv.lock
+    outs:
+    - requirements.lock:
+        cache: false
+
+  # Not repeatable and costs money, so `dvc repro` must not rerun it (rule T4). To rerun it on
+  # purpose, with LLAMAINDEX_API_KEY set: dvc unfreeze ocr && dvc repro ocr && dvc freeze ocr
+  ocr:
+    cmd: uv run --frozen python -m scripts.ocr
+    deps:
+    - docs/sources/ADA279069.pdf
+    - docs/sources/ADA294527.pdf
+    - scripts/ocr.py
+    outs:
+    - data/interim/ocr
+
+    frozen: true
+  ocr-markdown:
+    cmd: uv run --frozen python -m scripts.ocr_markdown
+    deps:
+    - data/interim/ocr
+    - scripts/ocr_markdown.py
+    outs:
+    - docs/ocr/ADA279069.md:
+        cache: false
+    - docs/ocr/ADA294527.md:
+        cache: false
+
+  tables:
+    cmd: uv run --frozen python -m scripts.build_tables
+    deps:
+    - data/raw/dtic-adm000368
+    - data/manual/exports
+    - src/par/tables.py
+    - src/par/build.py
+    - src/par/schemas
+    - scripts/build_tables.py
+    - requirements.lock
+    outs:
+    - data/processed/parquet
+    - data/interim/error_cells.parquet
+    - data/interim/control_totals.parquet
+    - data/interim/check_failures.parquet
+
+  validate:
+    cmd: uv run --frozen python -m scripts.validate
+    deps:
+    - data/interim/error_cells.parquet
+    - data/interim/control_totals.parquet
+    - data/interim/check_failures.parquet
+    - src/par/build.py
+    - scripts/validate.py
+    outs:
+    - results/validation/error_cells.csv:
+        cache: false
+    - results/validation/control_total_mismatches.csv:
+        cache: false
+    - results/validation/check_failures.csv:
+        cache: false
+    - results/validation/summary.csv:
+        cache: false
+
+  package:
+    cmd: uv run --frozen python -m scripts.package
+    deps:
+    - data/processed/parquet
+    - data/raw/dtic-adm000368
+    - data/manual/exports
+    - docs/sources/ADA279069.pdf
+    - docs/sources/ADA294527.pdf
+    - docs/ocr/ADA279069.md
+    - docs/ocr/ADA294527.md
+    - src/par/package.py
+    - src/par/tables.py
+    - src/par/schemas
+    - scripts/package.py
+    - requirements.lock
+    outs:
+    - data/processed/datapackage
+    - data/processed/par-datapackage.zip
+    - data/processed/par-diskette.zip

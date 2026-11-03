@@ -1,0 +1,39 @@
+source: SP128
+dataset: SP128-1961
+export: SP128.csv
+notes_rows: [94, 98]
+citation: |
+  Dataset: SP128-1961
+  Data From (Title): Historical Data and Lanchester's Theory of Combat
+  Author: Helmbold, Robert L.
+  Organization: Combat Operations Research Group.
+  Address: Fort Monroe, VA.
+  Publication Date: 1 July 1961.
+  Classification: UNCLASSIFIED.
+  Source Available From: DTIC as AD-480 975.
+  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  Spreadsheet last revised: 30 October 1993
+tables:
+  - name: sp128
+    title: Battles from CORG-SP-128, 1741 to 1945
+    rows: [2, 93]
+    keys: [seq_no]
+    missing: [NA]
+    checks:
+      - {name: attacker_loss_le_strength, expr: "attacker_losses <= attacker_strength"}
+      - {name: defender_loss_le_strength, expr: "defender_losses <= defender_strength"}
+    columns: &sp128
+      - [0, seq_no, integer, Sequence number]
+      - [1, battle_name, string, Battle name]
+      - [2, ref_no, integer, Reference number as used in CORG-SP-128]
+      - [3, year, integer, Year]
+      - [4, attacker, string, Attacker ID]
+      - [5, defender, string, Defender ID]
+      - [6, attacker_strength, number, Attacker initial strength]
+      - [7, defender_strength, number, Defender initial strength]
+      - [8, attacker_losses, number, Attacker losses]
+      - [9, attacker_loss_type, string, Attacker loss type code]
+      - [10, defender_losses, number, Defender losses]
+      - [11, defender_loss_type, string, Defender loss type code]
+      - [12, duration_days, number, Battle duration in days]
+      - [13, attacker_won, integer, 1 if the attacker won and 0 if the defender won]

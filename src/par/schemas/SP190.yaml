@@ -1,0 +1,40 @@
+source: SP190
+dataset: SP190-1964
+export: SP190.csv
+citation: |
+  Dataset: SP190-1964
+  Data From (Title): Historical Data and Lanchester's Theory of Combat Part II
+  Author: Helmbold, Robert L.
+  Organization: Combat Operations Research Group.
+  Address: Fort Belvoir, VA
+  Publication Date: August 1964.
+  Classification: UNCLASSIFIED.
+  Source Available From: DTIC as AD-480 109.
+  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
+  Spreadsheet last revised: 30 October 1993
+tables:
+  - name: sp190
+    title: Battles from CORG-SP-190, 280 BC to 1944
+    description: Negative years are BC.
+    rows: [2, 84]
+    keys: [seq_no]
+    missing: [NA]
+    checks:
+      - {name: attacker_loss_le_strength, expr: "attacker_losses <= attacker_strength"}
+      - {name: defender_loss_le_strength, expr: "defender_losses <= defender_strength"}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, battle_name, string, Battle name]
+      - [2, war, string, "War, campaign, or article"]
+      - [3, ref_no, integer, Reference number as used in CORG-SP-190]
+      - [4, year, integer, Year (negative for BC)]
+      - [5, attacker, string, Attacker ID]
+      - [6, defender, string, Defender ID]
+      - [7, attacker_strength, number, Attacker initial strength]
+      - [8, defender_strength, number, Defender initial strength]
+      - [9, attacker_losses, number, Attacker losses]
+      - [10, attacker_loss_type, string, Attacker loss type code]
+      - [11, defender_losses, number, Defender losses]
+      - [12, defender_loss_type, string, Defender loss type code. The 2013 CSV header misspelled this column]
+      - [13, duration_days, number, Battle duration in days]
+      - [14, attacker_won, integer, 1 if the attacker won and 0 if the defender won]

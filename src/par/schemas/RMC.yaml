@@ -1,0 +1,42 @@
+source: RMC
+dataset: RMC-1993
+export: RMC.csv
+citation_rows: [1, 11]
+notes_rows: [274, 344]
+tables:
+  - name: rmc
+    title: Ardennes and Lorraine battle days, 1944 to 1945
+    description: >-
+      The attrition columns hold -INF in many rows, which the sheet doesn't explain. It reads
+      like a spreadsheet log of zero, so those cells are null here and listed in the error report.
+    rows: [17, 266]
+    keys: [seq_no]
+    columns:
+      - [1, seq_no, integer, Sequence number]
+      - [3, operation, string, "Operation (Ardennes or Lorraine)"]
+      - [5, sector_id, integer, "Sector identification code used by RMC"]
+      - [7, date, date, "Date"]
+      - [9, attack_type, integer, "Attack type code (see notes)"]
+      - [11, attack_description, string, "Alphabetical description of the attack type code"]
+      - [13, posture_code, integer, "Defensive posture code (see notes)"]
+      - [15, attacker_code, integer, "1 for a US-initiated attack and 2 for a German-initiated attack"]
+      - [17, arty_us, number, "Rounds of US artillery ammunition expended"]
+      - [19, arty_ger, integer, "German artillery intensity code"]
+      - [21, env_line_mobility, integer, "E1 mobility restriction at the defensive position"]
+      - [23, env_line_visibility, integer, "E2 visibility at the defensive position"]
+      - [25, env_pen_mobility, integer, "E3 mobility restriction along the axis of penetration"]
+      - [27, env_pen_visibility, integer, "E4 visibility along the axis of penetration"]
+      - [29, inf_platoons_us, number, "US infantry platoon index"]
+      - [31, inf_platoons_ger, number, "German infantry platoon index"]
+      - [33, armor_us, number, "US tank-like vehicles"]
+      - [35, armor_ger, number, "German tank-like vehicles"]
+      - [37, antiarmor_us, number, "US antiarmor index"]
+      - [39, antiarmor_ger, number, "German antiarmor index"]
+      - [41, mech_us, number, "Percentage of US infantry mechanized"]
+      - [43, mech_ger, number, "Percentage of German infantry mechanized"]
+      - {col: 45, name: tank_attrition_us, type: number, description: "US armor loss rate per thousand vehicles per day", error: ["-INF"]}
+      - {col: 47, name: tank_attrition_ger, type: number, description: "German armor loss rate per thousand vehicles per day", error: ["-INF"]}
+      - {col: 49, name: pers_attrition_us, type: number, description: "US personnel casualty rate per thousand per day", error: ["-INF"]}
+      - {col: 51, name: pers_attrition_ger, type: number, description: "German personnel casualty rate per thousand per day", error: ["-INF"]}
+      - [53, advance_km, number, "Penetration distance in km"]
+      - [55, frontage_km, number, "Frontage attacked in km"]

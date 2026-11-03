@@ -1,0 +1,36 @@
+source: INCHON
+dataset: INCHON-1993
+export: INCHON.csv
+citation_rows: [1, 12]
+notes: |
+  Row 21 (day 4, 18 September 1950) carries the mark "(?)" after its last column in the sheet.
+tables:
+  - name: inchon
+    title: Inchon-Seoul daily strengths and casualties, 14 Sep to 7 Oct 1950
+    rows: [17, 40]
+    keys: [day]
+    missing: ["?"]
+    controls:
+      - {row: 42, label: Total, columns: {3: nk_reinforcements, 4: nk_strength, 5: un_landed, 6: un_ashore, 7: un_ashore_excl_first_day, 8: usmc_kia, 9: usmc_dow, 10: usmc_mia, 11: usmc_wia, 12: usmc_tbc, 13: enemy_pow, 14: enemy_est_casualties, 15: enemy_tbc, 16: enemy_strength, 17: enemy_reinforcements}}
+    checks:
+      - {name: usmc_tbc_sum, expr: "usmc_kia + usmc_dow + usmc_mia + usmc_wia = usmc_tbc"}
+      - {name: enemy_tbc_sum, expr: "enemy_pow + enemy_est_casualties = enemy_tbc"}
+    columns:
+      - [0, day, integer, Day (D-Day + day)]
+      - [1, date, date, Date]
+      - [2, usmc_strength, number, US Marine strength at 2400 on that day]
+      - [3, nk_reinforcements, number, North Korean reinforcements]
+      - [4, nk_strength, number, North Korean strength at 2400 on that day]
+      - [5, un_landed, number, UN forces landed according to Love]
+      - [6, un_ashore, number, UN forces ashore according to Love]
+      - [7, un_ashore_excl_first_day, number, UN forces ashore exclusive of the first day]
+      - [8, usmc_kia, number, USMC killed in action]
+      - [9, usmc_dow, number, USMC died of wounds]
+      - [10, usmc_mia, number, USMC missing in action]
+      - [11, usmc_wia, number, USMC wounded in action]
+      - [12, usmc_tbc, number, USMC total battle casualties]
+      - [13, enemy_pow, number, Enemy prisoners taken]
+      - [14, enemy_est_casualties, number, Enemy estimated casualties]
+      - [15, enemy_tbc, number, Enemy estimated total battle casualties]
+      - [16, enemy_strength, number, Enemy estimated strength at 2400]
+      - [17, enemy_reinforcements, number, Enemy estimated reinforcements on that day]

@@ -1,0 +1,55 @@
+source: BERNDT
+dataset: Berndt-1993
+export: BERNDT.csv
+citation_rows: [1, 12]
+tables:
+  - name: berndt
+    title: Selected land battles, 1741 to 1877
+    rows: [19, 96]
+    keys: [seq_no]
+    missing: ["??", "#VALUE!"]
+    checks:
+      - {name: victor_total, expr: "victor_bloody + victor_cmia = victor_total"}
+      - {name: loser_total, expr: "loser_bloody + loser_cmia = loser_total"}
+      - {name: victor_fraction, expr: "abs(victor_bloody / victor_strength - victor_bloody_fraction) < 0.001"}
+      - {name: loser_fraction, expr: "abs(loser_bloody / loser_strength - loser_bloody_fraction) < 0.001"}
+      - {name: strength_positive, expr: "victor_strength > 0 and loser_strength > 0"}
+    columns: &berndt
+      - [0, seq_no, integer, Sequence number]
+      - [1, battle_name, string, Battle name]
+      - [2, start_year, integer, Start year]
+      - [3, start_month, integer, Start month]
+      - [4, start_day, integer, Start day]
+      - [5, victor, string, Victor ID]
+      - [6, loser, string, Loser ID]
+      - [7, victor_strength, number, Initial victor strength (V0)]
+      - [8, loser_strength, number, Initial loser strength (L0)]
+      - [9, victor_bloody, number, Victor bloody losses (Cv)]
+      - [10, victor_cmia, number, Victor captured or missing losses]
+      - [11, victor_total, number, Victor total losses]
+      - [12, loser_bloody, number, Loser bloody losses (Cl)]
+      - [13, loser_cmia, number, Loser captured or missing losses]
+      - [14, loser_total, number, Loser total losses]
+      - [15, duration_hours, number, Battle duration in hours]
+      - [16, victor_bloody_fraction, number, Victor bloody losses as a fraction of initial strength]
+      - [17, loser_bloody_fraction, number, Loser bloody losses as a fraction of initial strength]
+  - name: berndt_naval
+    title: Four naval battles listed below the BERNDT table
+    description: >-
+      The sheet has no separate header for these rows. Their values sit under the land-battle
+      columns, and the strengths look like ship counts, which the sheet doesn't state.
+    rows: [98, 101]
+    keys: [battle_name]
+    missing: ["??"]
+    columns:
+      - [1, battle_name, string, Battle name]
+      - [2, start_year, integer, Start year]
+      - [3, start_month, integer, Start month]
+      - [4, start_day, integer, Start day]
+      - [5, victor, string, Victor ID]
+      - [6, loser, string, Loser ID]
+      - [7, victor_strength, number, Value under the initial victor strength column]
+      - [8, loser_strength, number, Value under the initial loser strength column]
+      - [11, victor_total, number, Value under the victor total losses column]
+      - [14, loser_total, number, Value under the loser total losses column]
+      - [15, duration_hours, number, Value under the battle duration column]

@@ -1,0 +1,218 @@
+schema: '2.0'
+stages:
+  runtime-lock:
+    cmd: uv export --no-dev --frozen --no-header --no-emit-project -o 
+      requirements.lock
+    deps:
+    - path: uv.lock
+      hash: md5
+      md5: 30b15c90743de121e6bfb5375917433f
+      size: 536112
+    outs:
+    - path: requirements.lock
+      hash: md5
+      md5: 079ffe17d5cbf3ab459466deb5e47ee3
+      size: 135099
+  ocr:
+    cmd: uv run --frozen python -m scripts.ocr
+    deps:
+    - path: docs/sources/ADA279069.pdf
+      hash: md5
+      md5: 9e82eb709d85960d3782af74e6a12d52
+      size: 8124718
+    - path: docs/sources/ADA294527.pdf
+      hash: md5
+      md5: d24727b57336f6678c01304150345e0f
+      size: 5767806
+    - path: scripts/ocr.py
+      hash: md5
+      md5: 7ea5682414e3f61a87d1be5cfa11406a
+      size: 154
+    outs:
+    - path: data/interim/ocr
+      hash: md5
+      md5: 49b10d6391b3293e19bee12d41f3e378.dir
+      size: 654357
+      nfiles: 2
+  ocr-markdown:
+    cmd: uv run --frozen python -m scripts.ocr_markdown
+    deps:
+    - path: data/interim/ocr
+      hash: md5
+      md5: 49b10d6391b3293e19bee12d41f3e378.dir
+      size: 654357
+      nfiles: 2
+    - path: scripts/ocr_markdown.py
+      hash: md5
+      md5: 80b5b5bdb7b96b180edb1e86081a2e7a
+      size: 156
+    outs:
+    - path: docs/ocr/ADA279069.md
+      hash: md5
+      md5: f18843ebfe66e286921ca3fcf3f74f70
+      size: 414601
+    - path: docs/ocr/ADA294527.md
+      hash: md5
+      md5: 085ab74759dfa813bb42ebd72b7550f5
+      size: 186388
+  tables:
+    cmd: uv run --frozen python -m scripts.build_tables
+    deps:
+    - path: data/manual/exports
+      hash: md5
+      md5: 3cfb7e790e0a06ceabca9b05c8ecff14.dir
+      size: 746257
+      nfiles: 26
+    - path: data/raw/dtic-adm000368
+      hash: md5
+      md5: a27241b60c6ebae3963c1863b66df5c6.dir
+      size: 3168730
+      nfiles: 33
+    - path: requirements.lock
+      hash: md5
+      md5: 079ffe17d5cbf3ab459466deb5e47ee3
+      size: 135099
+    - path: scripts/build_tables.py
+      hash: md5
+      md5: 75f00edab724ab36f1d52e590c7a68f6
+      size: 160
+    - path: src/par/build.py
+      hash: md5
+      md5: be83a5fcc69efe2f7bfb41372a4051f7
+      size: 3890
+    - path: src/par/schemas
+      hash: md5
+      md5: ac8574f52af5c22a9051d9fb1656a1f3.dir
+      size: 57439
+      nfiles: 28
+    - path: src/par/tables.py
+      hash: md5
+      md5: 608e3407eb1e2853da5bcde82941ec22
+      size: 11981
+    outs:
+    - path: data/interim/check_failures.parquet
+      hash: md5
+      md5: 8542677605efc259a6c9905404eef602
+      size: 1948
+    - path: data/interim/control_totals.parquet
+      hash: md5
+      md5: bec32bf8b46eff34371e26b44e2a1d70
+      size: 2983
+    - path: data/interim/error_cells.parquet
+      hash: md5
+      md5: 72848da8a250d1fd2c963a4262369a46
+      size: 3229
+    - path: data/processed/parquet
+      hash: md5
+      md5: a726b8d2056c5fe3761a7186f0df987f.dir
+      size: 574727
+      nfiles: 36
+  validate:
+    cmd: uv run --frozen python -m scripts.validate
+    deps:
+    - path: data/interim/check_failures.parquet
+      hash: md5
+      md5: 8542677605efc259a6c9905404eef602
+      size: 1948
+    - path: data/interim/control_totals.parquet
+      hash: md5
+      md5: bec32bf8b46eff34371e26b44e2a1d70
+      size: 2983
+    - path: data/interim/error_cells.parquet
+      hash: md5
+      md5: 72848da8a250d1fd2c963a4262369a46
+      size: 3229
+    - path: scripts/validate.py
+      hash: md5
+      md5: 736fdb9c62edf3b9ef4af56df3460c08
+      size: 152
+    - path: src/par/build.py
+      hash: md5
+      md5: be83a5fcc69efe2f7bfb41372a4051f7
+      size: 3890
+    outs:
+    - path: results/validation/check_failures.csv
+      hash: md5
+      md5: 40187bec8bd008527a3fc6247cb98fbb
+      size: 1329
+    - path: results/validation/control_total_mismatches.csv
+      hash: md5
+      md5: a2f9cda767dcf1ea695206bb1f132b09
+      size: 53
+    - path: results/validation/error_cells.csv
+      hash: md5
+      md5: 04a8473285a64274a4643e863ef03633
+      size: 25605
+    - path: results/validation/summary.csv
+      hash: md5
+      md5: 893621165fef7ccf63237bbc1b3fe693
+      size: 488
+  package:
+    cmd: uv run --frozen python -m scripts.package
+    deps:
+    - path: data/manual/exports
+      hash: md5
+      md5: 3cfb7e790e0a06ceabca9b05c8ecff14.dir
+      size: 746257
+      nfiles: 26
+    - path: data/processed/parquet
+      hash: md5
+      md5: a726b8d2056c5fe3761a7186f0df987f.dir
+      size: 574727
+      nfiles: 36
+    - path: data/raw/dtic-adm000368
+      hash: md5
+      md5: a27241b60c6ebae3963c1863b66df5c6.dir
+      size: 3168730
+      nfiles: 33
+    - path: docs/ocr/ADA279069.md
+      hash: md5
+      md5: f18843ebfe66e286921ca3fcf3f74f70
+      size: 414601
+    - path: docs/ocr/ADA294527.md
+      hash: md5
+      md5: 085ab74759dfa813bb42ebd72b7550f5
+      size: 186388
+    - path: docs/sources/ADA279069.pdf
+      hash: md5
+      md5: 9e82eb709d85960d3782af74e6a12d52
+      size: 8124718
+    - path: docs/sources/ADA294527.pdf
+      hash: md5
+      md5: d24727b57336f6678c01304150345e0f
+      size: 5767806
+    - path: requirements.lock
+      hash: md5
+      md5: 079ffe17d5cbf3ab459466deb5e47ee3
+      size: 135099
+    - path: scripts/package.py
+      hash: md5
+      md5: dd4e0e5f07098fd66eb787f048e91487
+      size: 207
+    - path: src/par/package.py
+      hash: md5
+      md5: 726eef812ad94663a8b4e2b034c6c40d
+      size: 4872
+    - path: src/par/schemas
+      hash: md5
+      md5: ac8574f52af5c22a9051d9fb1656a1f3.dir
+      size: 57439
+      nfiles: 28
+    - path: src/par/tables.py
+      hash: md5
+      md5: 608e3407eb1e2853da5bcde82941ec22
+      size: 11981
+    outs:
+    - path: data/processed/datapackage
+      hash: md5
+      md5: ced629edd8591b6152b630250610055e.dir
+      size: 16711247
+      nfiles: 41
+    - path: data/processed/par-datapackage.zip
+      hash: md5
+      md5: 29c2a660ca0d1323ab6e65e73f292e16
+      size: 14070085
+    - path: data/processed/par-diskette.zip
+      hash: md5
+      md5: b0ac5fd833e0387e96ca92d8f90555e7
+      size: 722482

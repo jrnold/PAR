@@ -1,0 +1,26 @@
+source: CRETE
+dataset: CRETE-1993
+export: CRETE.csv
+citation_rows: [1, 11]
+notes_rows: [36, 40]
+tables:
+  - name: crete
+    title: Battle of Crete daily strengths and losses
+    description: >-
+      Engel's model values. The loss and survivor columns were iterative formulas that the 2013
+      LibreOffice export could not evaluate; see results/validation/error_cells.csv.
+    rows: [16, 29]
+    keys: [day_number]
+    missing: ["Err:522"]
+    columns:
+      - [0, day_number, integer, Day number]
+      - [3, d_day_plus, integer, Day relative to D-Day]
+      - [4, german_landings, number, German personnel landed on the day]
+      - [5, german_loss, number, German personnel lost on the day]
+      - [6, german_cum_losses, number, German cumulative losses]
+      - [7, german_survivors, number, German survivors]
+      - [8, allied_ashore, number, British personnel ashore]
+      - [9, allied_landings, number, "British personnel landed (negative: withdrawn)"]
+      - [10, allied_loss, number, British personnel lost on the day]
+      - [11, allied_cum_losses, number, British cumulative losses]
+      - [12, allied_survivors, number, British survivors remaining on the island]

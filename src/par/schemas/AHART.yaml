@@ -1,0 +1,47 @@
+source: AHART
+dataset: AHART-1993
+fixed_width: {files: [AHART.001, AHART.002, AHART.003, AHART.004]}
+citation: |
+  Dougherty, Francis L., "Analysis of Historical Artillery Expenditures (AHART) Study-CY87."
+  US Army Concepts Analysis Agency, Technical Paper CAA-TP-87-6, June 1987, UNCLASSIFIED.
+tables:
+  - name: ahart
+    title: Artillery expenditures by selected US units, World War II to Vietnam
+    description: >-
+      Blank fields and codes such as UNSP mean unknown; -1 in tube_quantity and rounds_per_tube_day
+      is kept as in the source. The diskette README gives a record length of 344 including CRLF, so
+      misc holds 55 characters rather than the listed 57. The catalog counts 3,594 records; the
+      files hold 3,595.
+    keys: [source_row]
+    columns:
+      - [20, source_name, string, Data source]
+      - [12, battle, string, Battle]
+      - [12, unit, string, Supported unit]
+      - [8, size, string, Size of the supported unit]
+      - {width: 8, name: date, type: date, description: Date, format: "%Y%m%d"}
+      - [12, arty_unit, string, Artillery unit]
+      - [11, tube_type, string, Tube type]
+      - [7, tube_category, string, Tube category]
+      - [12, tube_quantity, integer, Tube quantity]
+      - [6, round_type, string, Round type]
+      - [10, rounds_per_day, number, Rounds per day]
+      - [8, round_quantity, integer, Round quantity]
+      - [3, days_quantity, integer, Number of days]
+      - [9, operation, string, Operation]
+      - [5, round_weight, number, Round weight]
+      - [10, round_weight_per_day, number, Round weight per day]
+      - [12, total_weight, number, Total weight]
+      - [6, rounds_per_tube_day, number, Rounds per tube per day]
+      - [4, round_cost, number, Round cost]
+      - [10, round_cost_per_day, number, Round cost per day]
+      - [12, total_cost, number, Total cost]
+      - [10, notes, string, Notes]
+      - [12, red_unit, string, Opposing unit]
+      - [8, red_size, string, Opposing unit size]
+      - [10, red_operation, string, Opposing operation]
+      - [12, red_tube_type, string, Opposing tube type]
+      - [10, red_tube_quantity, string, Opposing tube quantity]
+      - [6, red_round_type, string, Opposing round type]
+      - [10, red_rounds_per_day, string, Opposing rounds per day]
+      - [12, red_round_quantity, string, Opposing round quantity]
+      - [55, misc, string, Remaining fields as stored; seldom known according to the catalog]

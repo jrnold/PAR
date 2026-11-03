@@ -1,0 +1,33 @@
+source: WESTWALL
+dataset: WESTWALL-1993
+export: WESTWALL.csv
+citation_rows: [1, 13]
+notes_rows: [34, 51]
+tables:
+  - name: westwall
+    title: Westwall combat phases, 2 to 7 Oct 1944
+    rows: [19, 30]
+    keys: [seq_no]
+    missing: ["#N/A"]
+    controls:
+      - {row: 32, label: Overall, columns: {5: duration_hours, 11: us_losses, 12: german_losses, 13: us_reinforcements, 14: german_reinforcements}}
+    columns:
+      - [0, seq_no, integer, Sequence number]
+      - [1, begin_date, date, Phase begin date]
+      - [2, begin_time, time, Phase begin time]
+      - [3, end_date, date, Phase end date]
+      - [4, end_time, time, Phase end time]
+      - [5, duration_hours, number, Phase duration in hours]
+      - [6, begin_hours, number, Begin time in hours from the start of the battle]
+      - [7, end_hours, number, End time in hours from the start of the battle]
+      - [8, active, string, Y if the phase was active and N if relatively quiet]
+      - [9, us_start_strength, number, US start strength]
+      - [10, german_start_strength, number, German start strength]
+      - [11, us_losses, number, US losses during the phase]
+      - [12, german_losses, number, German losses during the phase]
+      - [13, us_reinforcements, number, US reinforcements or replacements during the phase]
+      - [14, german_reinforcements, number, German reinforcements or replacements during the phase]
+      - [15, us_reinforcement_rate, number, US reinforcement or replacement rate per hour]
+      - [16, german_reinforcement_rate, number, German reinforcement or replacement rate per hour]
+      - [17, us_calc_strength, number, Estimated US strength at the start of the phase]
+      - [18, german_calc_strength, number, Estimated German strength at the start of the phase]
