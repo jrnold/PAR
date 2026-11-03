@@ -1,6 +1,6 @@
 # Personnel Attrition Rates in Historical Land Combat Operations
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23927050.svg)](https://doi.org/10.5281/zenodo.23927050)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23927049.svg)](https://doi.org/10.5281/zenodo.23927049)
 [![lint](https://github.com/jrnold/PAR/actions/workflows/lint.yml/badge.svg)](https://github.com/jrnold/PAR/actions/workflows/lint.yml)
 [![Data: PDDL 1.0](https://img.shields.io/badge/data-PDDL%201.0-lightgrey.svg)](https://opendatacommons.org/licenses/pddl/1-0/)
 [![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
@@ -11,9 +11,9 @@ casualties in battles and operations from 280 BC to 1982, in 36 tables from 28 s
 
 The finished data is a [Frictionless data package](https://datapackage.org/), archived on Zenodo with
 the original diskette files and both reports:
-[doi:10.5281/zenodo.23927050](https://doi.org/10.5281/zenodo.23927050). `dvc repro` builds it as
-`data/processed/par-datapackage.zip`, and `src/par/zenodo.py` uploads it. The archive still holds
-version 1.0.0, built from the 2013 exports;
+[doi:10.5281/zenodo.23927049](https://doi.org/10.5281/zenodo.23927049). `dvc repro` builds it as
+`data/processed/par-datapackage.zip`, and `src/par/zenodo.py` uploads it. That DOI always resolves to the
+latest version. Version 1.0.0 was built from the 2013 exports;
 [`docs/known-errors.md`](docs/known-errors.md) lists how version 2.0.0 differs.
 
 ## Get the data
