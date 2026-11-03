@@ -1,0 +1,21 @@
+# Lint baseline: typos. Add project words under [default.extend-words] with a comment.
+[files]
+extend-exclude = [
+  "*.bib",
+  "*.html",
+  "*.lock",
+  "_freeze/",
+  "_site/",
+  "data/",
+  "data-raw/",
+]
+
+[default]
+extend-ignore-re = [
+  # Hex strings and hashes
+  "\\b[0-9a-f]{7,40}\\b",
+  # A line ending in a `spellchecker:disable-line` comment
+  "(?Rm)^.*(#|//|--)\\s*spellchecker:disable-line$",
+]
+
+[default.extend-words]
