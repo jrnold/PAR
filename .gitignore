@@ -1,0 +1,18 @@
+# Copy to <project>/.gitignore. DVC adds its own per-output entries; these lines are a guard against
+# adding a data file to git by hand. `.dvc` files are not matched, so they stay tracked.
+data/**/*.parquet
+data/**/*.nc
+data/**/*.zarr
+data/**/*.csv
+data/**/*.tsv
+data/**/*.json
+data/**/*.jsonl
+results/**/*.parquet
+
+# Hand-edited tables are the one kind of data in git (rule L2).
+!data/manual/**
+
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/

@@ -1,0 +1,8 @@
+# Copy to <project>/.dvc/config after `dvc init --subdir`, replacing PAR. The cache directory
+# and type are per machine, so they stay in the global config (~/.config/dvc/config).
+[core]
+    remote = gcs
+    autostage = true
+    analytics = false
+['remote "gcs"']
+    url = gs://jrnold-dvc/PAR
