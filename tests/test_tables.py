@@ -8,7 +8,8 @@ from typing import Any
 import pytest
 import yaml
 
-from par import tables
+from par import tables, zenodo
+from par.package import VERSION
 from par.sources import load_sources, parse_citation
 from par.zenodo import metadata
 
@@ -349,3 +350,32 @@ def test_zenodo_metadata_has_required_fields() -> None:
     assert record["publication_date"] == "2026-01-02"
     for key in ("title", "upload_type", "description", "creators"):
         assert record[key]
+    assert record["version"] == VERSION
+
+
+def test_zenodo_upload_needs_a_target_so_it_cant_create_a_separate_record(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr("sys.argv", ["par-zenodo-upload"])
+    monkeypatch.setattr(zenodo, "request", lambda *_a, **_k: pytest.fail("called the API"))
+    with pytest.raises(SystemExit):
+        zenodo.main()
+
+
+def test_zenodo_publish_needs_a_draft(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("sys.argv", ["par-zenodo-upload", "--new-version-of", "1", "--publish"])
+    monkeypatch.setattr(zenodo, "request", lambda *_a, **_k: pytest.fail("called the API"))
+    with pytest.raises(SystemExit):
+        zenodo.main()
+
+
+def test_zenodo_new_version_returns_the_new_draft(monkeypatch: pytest.MonkeyPatch) -> None:
+    calls: list[tuple[str, str]] = []
+
+    def fake(url: str, _token: str, method: str = "GET") -> dict[str, Any]:
+        calls.append((method, url))
+        return {"id": 2, "links": {"latest_draft": "draft-url"}}
+
+    monkeypatch.setattr(zenodo, "request", fake)
+    assert zenodo.new_version_draft(1, "token")["id"] == 2
+    assert calls == [("POST", f"{zenodo.API}/1/actions/newversion"), ("GET", "draft-url")]

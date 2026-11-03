@@ -3,8 +3,8 @@
 Uploading only changes the draft. Publishing is a separate flag because it can't be undone:
 Zenodo doesn't allow the files of a published version to change.
 
-    uv run --env-file .env par-zenodo-upload                  # creates a draft and prints its id
-    uv run --env-file .env par-zenodo-upload --deposition ID  # updates that draft
+    uv run --env-file .env par-zenodo-upload --new-version-of RECORD  # drafts a new version
+    uv run --env-file .env par-zenodo-upload --deposition ID          # updates that draft
     uv run --env-file .env par-zenodo-upload --deposition ID --publish
 """
 
@@ -17,6 +17,8 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Any
+
+from par.package import VERSION
 
 API = "https://zenodo.org/api/deposit/depositions"
 FILES = [
@@ -56,6 +58,7 @@ def metadata(publication_date: datetime.date) -> dict[str, Any]:
         "title": "Personnel Attrition Rates in Historical Land Combat Operations: data package",
         "upload_type": "dataset",
         "publication_date": publication_date.isoformat(),
+        "version": VERSION,
         "description": DESCRIPTION,
         "access_right": "open",
         "license": "pddl-1.0",
@@ -114,6 +117,12 @@ def upload_file(bucket: str, path: Path, token: str) -> dict[str, Any]:
             raise RuntimeError(f"PUT {path.name}: {error.code} {error.read().decode()}") from error
 
 
+def new_version_draft(record: int, token: str) -> dict[str, Any]:
+    """Return a draft of a new version of a published record, which keeps its concept DOI."""
+    done = request(f"{API}/{record}/actions/newversion", token, method="POST")
+    return request(done["links"]["latest_draft"], token)
+
+
 def check_checksum(path: Path, reported: str) -> None:
     """Fail unless Zenodo's checksum, such as `md5:abc`, matches the local file."""
     expected = md5(path)
@@ -122,16 +131,20 @@ def check_checksum(path: Path, reported: str) -> None:
 
 
 def main() -> None:
-    """Create or update the draft, or publish it when asked."""
+    """Draft a new version, update a draft, or publish one when asked."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--deposition", type=int, help="Zenodo draft id; omit to create a draft")
+    target = parser.add_mutually_exclusive_group(required=True)
+    target.add_argument("--deposition", type=int, help="id of an existing Zenodo draft")
+    target.add_argument(
+        "--new-version-of", type=int, metavar="RECORD", help="published record to add a version to"
+    )
     parser.add_argument("--publish", action="store_true", help="publish the draft as it stands")
     args = parser.parse_args()
+    if args.publish and args.deposition is None:
+        parser.error("--publish needs --deposition")
     token = os.environ["ZENODO_API_KEY"]
 
     if args.publish:
-        if args.deposition is None:
-            parser.error("--publish needs --deposition")
         done = request(f"{API}/{args.deposition}/actions/publish", token, method="POST")
         print(f"published {done['doi']}: {done['links']['record_html']}")
         return
@@ -139,8 +152,8 @@ def main() -> None:
     missing = [str(path) for path in FILES if not path.exists()]
     if missing:
         raise FileNotFoundError(f"run dvc repro first; missing {missing}")
-    if args.deposition is None:
-        draft = request(API, token, method="POST", payload={})
+    if args.new_version_of is not None:
+        draft = new_version_draft(args.new_version_of, token)
     else:
         draft = request(f"{API}/{args.deposition}", token)
     url = f"{API}/{draft['id']}"
