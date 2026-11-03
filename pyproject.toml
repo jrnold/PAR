@@ -5,7 +5,7 @@ description = "Personnel Attrition Rates (PAR) data disk: tidy tables, a Frictio
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
     "dvc[gs]>=3.67.1",
     "duckdb>=1.1",
@@ -35,6 +35,8 @@ line-length = 100
 select = [
     "E", "W", "F", "I", "B", "UP", "RUF", "SIM", "C4", "PT", "NPY", "PD", "PTH", "RET", "ARG",
     "PL", "TRY", "PERF", "FURB", "S", "DTZ", "N",
+    # Strict profile only
+    "D", "ANN", "T20", "ERA",
 ]
 ignore = [
     "N803",     # argument names like X, N, K, Sigma are standard notation
@@ -52,11 +54,16 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"**/tests/**" = ["S101", "ARG"]
-"*.ipynb" = ["B018", "E402"]
+"**/tests/**" = ["S101", "ANN", "D", "ARG"]
+"*.ipynb" = ["B018", "D", "ANN", "E402", "T201"]
+"**/scripts/**" = ["T201"]
+"src/par/zenodo.py" = ["T201"]  # a command-line tool: printing progress is its output
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -73,6 +80,7 @@ error-on-warning = true
 addopts = ["-ra", "--strict-markers", "--strict-config", "--import-mode=importlib"]
 xfail_strict = true
 testpaths = ["tests"]
+filterwarnings = ["error"]
 
 [tool.deptry]
 known_first_party = ["par"]

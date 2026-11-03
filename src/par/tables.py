@@ -15,6 +15,9 @@ from typing import Any
 import pyarrow as pa
 import yaml
 
+# A parsed cell. Missing values are None.
+type Cell = int | float | str | dt.date | dt.time | None
+
 SCHEMA_DIR = Path(__file__).parent / "schemas"
 EXPORT_DIR = Path("data/manual/exports")
 RAW_DIR = Path("data/raw/dtic-adm000368")
@@ -87,7 +90,7 @@ def shift_year(value: dt.date, years: int) -> dt.date:
     return value.replace(year=value.year + years)
 
 
-def parse_value(value: str, column: dict[str, Any], offset: int) -> Any:
+def parse_value(value: str, column: dict[str, Any], offset: int) -> Cell:
     """Convert a non-missing cell to the column's type, raising ValueError if it doesn't fit."""
     kind = column["type"]
     if kind == "string":
@@ -174,8 +177,8 @@ def settle_type(column: dict[str, Any], values: list[Any]) -> dict[str, Any]:
 
 
 def convert_cell(
-    cell: str, column: dict[str, Any], missing: set[str], offset: int, previous: list[Any]
-) -> Any:
+    cell: str, column: dict[str, Any], missing: set[str], offset: int, previous: list[Cell]
+) -> Cell:
     """Convert one cell, returning None for a missing value and the row above for a ditto mark."""
     if cell == column.get("ditto"):
         return previous[-1]
