@@ -10,7 +10,7 @@ Tidy tables and a Frictionless data package from the 1994 PAR data diskettes. Se
 
 ## Data (DVC)
 
-This project follows the data baseline; read it with `git show main:data-baseline/README.md`. Its
+This project follows the data baseline; read it with `git -C ~/jrnold-projects show origin/main:data-baseline/README.md`. Its
 project type is corpus. This directory is its own DVC project, so run `dvc` from here.
 
 - Default remote: `gs://jrnold-dvc/PAR`. On an auth error, ask the user to run
