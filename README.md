@@ -4,9 +4,10 @@ Tidy tables from the Personnel Attrition Rates (PAR) data diskettes, compiled by
 at the US Army Concepts Analysis Agency in 1993 and 1994. They cover personnel strengths and
 casualties in battles and operations from 280 BC to 1982, in 36 tables from 28 source files.
 
-The finished data is a [Frictionless data package](https://datapackage.org/), built by `dvc repro`
-as `data/processed/par-datapackage.zip`. A Zenodo record isn't published yet; the uploader is in
-`src/par/zenodo.py`.
+The finished data is a [Frictionless data package](https://datapackage.org/), archived on Zenodo with
+the original diskette files and both reports:
+[doi:10.5281/zenodo.23927050](https://doi.org/10.5281/zenodo.23927050). `dvc repro` builds it as
+`data/processed/par-datapackage.zip`, and `src/par/zenodo.py` uploads it.
 
 ## Get the data
 
