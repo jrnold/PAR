@@ -6,13 +6,13 @@ stages:
     deps:
     - path: uv.lock
       hash: md5
-      md5: 30b15c90743de121e6bfb5375917433f
-      size: 536112
+      md5: 5a0aa95c0f5b05c76441d35b4a569b9f
+      size: 444154
     outs:
     - path: requirements.lock
       hash: md5
-      md5: 079ffe17d5cbf3ab459466deb5e47ee3
-      size: 135099
+      md5: 5f846e3328b27593e30fb8249a33dde8
+      size: 111809
   ocr:
     cmd: uv run --frozen python -m scripts.ocr
     deps:
@@ -70,8 +70,8 @@ stages:
       nfiles: 33
     - path: requirements.lock
       hash: md5
-      md5: 079ffe17d5cbf3ab459466deb5e47ee3
-      size: 135099
+      md5: 5f846e3328b27593e30fb8249a33dde8
+      size: 111809
     - path: scripts/build_tables.py
       hash: md5
       md5: 75f00edab724ab36f1d52e590c7a68f6
@@ -87,8 +87,8 @@ stages:
       nfiles: 28
     - path: src/par/tables.py
       hash: md5
-      md5: 608e3407eb1e2853da5bcde82941ec22
-      size: 11981
+      md5: ea55c09c6ed58d834fdd84d3f0cc1b49
+      size: 12084
     outs:
     - path: data/interim/check_failures.parquet
       hash: md5
@@ -183,8 +183,8 @@ stages:
       size: 5767806
     - path: requirements.lock
       hash: md5
-      md5: 079ffe17d5cbf3ab459466deb5e47ee3
-      size: 135099
+      md5: 5f846e3328b27593e30fb8249a33dde8
+      size: 111809
     - path: scripts/package.py
       hash: md5
       md5: dd4e0e5f07098fd66eb787f048e91487
@@ -200,8 +200,8 @@ stages:
       nfiles: 28
     - path: src/par/tables.py
       hash: md5
-      md5: 608e3407eb1e2853da5bcde82941ec22
-      size: 11981
+      md5: ea55c09c6ed58d834fdd84d3f0cc1b49
+      size: 12084
     outs:
     - path: data/processed/datapackage
       hash: md5
