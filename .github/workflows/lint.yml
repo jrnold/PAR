@@ -21,7 +21,8 @@ jobs:
       # Hooks whose tools CI doesn't install (R, Lean, Lua, macOS, OpenTofu, shells, Node
       # projects); they run locally. A repo that needs one in CI adds a setup step and drops it
       # from this list.
-      SKIP: no-commit-to-branch,lintr,lake-build,luacheck,plutil,claude-plugin-validate,zsh-syntax,fish-syntax,fish-indent,typstyle,tofu-fmt,tflint,trivy-config,tsc,eslint-astro
+      # dvc-pushed needs DVC and the bucket's credentials, which CI doesn't have; it guards local pushes.
+      SKIP: no-commit-to-branch,dvc-pushed,lintr,lake-build,luacheck,plutil,claude-plugin-validate,zsh-syntax,fish-syntax,fish-indent,typstyle,tofu-fmt,tflint,trivy-config,tsc,eslint-astro
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
