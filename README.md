@@ -1,5 +1,10 @@
 # Personnel Attrition Rates in Historical Land Combat Operations
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23927050.svg)](https://doi.org/10.5281/zenodo.23927050)
+[![lint](https://github.com/jrnold/PAR/actions/workflows/lint.yml/badge.svg)](https://github.com/jrnold/PAR/actions/workflows/lint.yml)
+[![Data: PDDL 1.0](https://img.shields.io/badge/data-PDDL%201.0-lightgrey.svg)](https://opendatacommons.org/licenses/pddl/1-0/)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+
 Tidy tables from the Personnel Attrition Rates (PAR) data diskettes, compiled by Robert L. Helmbold
 at the US Army Concepts Analysis Agency in 1993 and 1994. They cover personnel strengths and
 casualties in battles and operations from 280 BC to 1982, in 36 tables from 28 source files.
