@@ -1,0 +1,21 @@
+table,check,expression,source_row
+ade,bloody_le_tbc_allied,allied_bloody <= allied_tbc + 0.5,145
+bwshall,loser_loss_le_strength,loser_losses <= loser_strength,89
+bwshall,loser_loss_le_strength,loser_losses <= loser_strength,475
+bwshall,winner_bloody,winner_dead + winner_wounded = winner_bloody,919
+bwshall,winner_loss_le_strength,winner_losses <= winner_strength,945
+bwshall,winner_losses,winner_bloody + winner_mia_pow = winner_losses,927
+cec,tbc_sum,kia + wia + cmia = battle_casualties,27
+cec,tbc_sum,kia + wia + cmia = battle_casualties,46
+cec,tbc_sum,kia + wia + cmia = battle_casualties,74
+cec,tbc_sum,kia + wia + cmia = battle_casualties,75
+cec,tbc_sum,kia + wia + cmia = battle_casualties,78
+cec,tbc_sum,kia + wia + cmia = battle_casualties,80
+cec,tbc_sum,kia + wia + cmia = battle_casualties,81
+cec,tbc_sum,kia + wia + cmia = battle_casualties,84
+cec,tbc_sum,kia + wia + cmia = battle_casualties,85
+comp28id,sequence_unique,seq_no not in (select seq_no from t group by seq_no having count(*) > 1),87
+comp28id,sequence_unique,seq_no not in (select seq_no from t group by seq_no having count(*) > 1),88
+mottelay,federal_kw,federal_killed + federal_wounded = federal_kw,34
+parmisc,defender_loss_le_strength,defender_losses <= defender_strength,32
+parmisc,defender_loss_le_strength,defender_losses <= defender_strength,167
