@@ -18,6 +18,7 @@ the original diskette files and both reports:
 
 ```bash
 uv sync
+cargo install quattro-sqz --locked    # only to rerun the `sheets` stage
 uv run dvc pull    # needs read access to gs://jrnold-dvc/PAR
 uv run dvc repro
 ```
@@ -50,20 +51,25 @@ Two reports document them, and both are in this repository, with OCR text from L
   | *Addenda to the Annotated Bibliography.* CAA-RP-95-2. DTIC ADA294527.                                                                                          | [PDF](docs/sources/ADA294527.pdf) | [Markdown](docs/ocr/ADA294527.md) |
 
 The spreadsheets on the diskettes are `.WQ!` files, Quattro Pro worksheets compressed with
-[SQZ!](https://en.wikipedia.org/wiki/Synex_Systems_Corporation). In 2013 they were converted by
-hand, through DOS Quattro Pro and LibreOffice, to the CSV files in `data/manual/exports/`. Those
-exports are the source for those tables. The pipeline doesn't read the `.WQ!` files, which are kept
-unchanged in `data/raw/`. Spreadsheet errors in the exports are null in the tables.
+[SQZ!](https://en.wikipedia.org/wiki/Synex_Systems_Corporation). The `sheets` stage decodes them to
+CSV with [`sqz`](https://github.com/jrnold/sqz), and those CSVs are the source for the tables.
+Spreadsheet errors are null in the tables. A formula cell holds its stored result, and dates arrive
+as spreadsheet date numbers, which the tables convert.
+
+`BODASHIP.WQ!` is missing from the diskettes, so that table alone reads a CSV exported in 2013. The
+other files in `data/manual/exports/`, converted by hand through DOS Quattro Pro and LibreOffice, are
+kept for reference and aren't read by the pipeline.
 
 ## How it's built
 
-  | Stage          | Input                                                                  | Output                                                                   |
-  | -------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-  | `ocr` (frozen) | `docs/sources/*.pdf`                                                   | `data/interim/ocr/`                                                      |
-  | `ocr-markdown` | OCR results                                                            | `docs/ocr/*.md`                                                          |
-  | `tables`       | `data/manual/exports/`, `data/raw/dtic-adm000368/`, `src/par/schemas/` | `data/processed/parquet/`, issue logs                                    |
-  | `validate`     | issue logs                                                             | `results/validation/*.csv`                                               |
-  | `package`      | tables, reports                                                        | `data/processed/datapackage/`, `par-datapackage.zip`, `par-diskette.zip` |
+  | Stage          | Input                                                                   | Output                                                                   |
+  | -------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+  | `ocr` (frozen) | `docs/sources/*.pdf`                                                    | `data/interim/ocr/`                                                      |
+  | `ocr-markdown` | OCR results                                                             | `docs/ocr/*.md`                                                          |
+  | `sheets`       | `data/raw/dtic-adm000368/*.WQ!`                                         | `data/interim/sqz-csv/`                                                  |
+  | `tables`       | `data/interim/sqz-csv/`, `data/raw/dtic-adm000368/`, `src/par/schemas/` | `data/processed/parquet/`, issue logs                                    |
+  | `validate`     | issue logs                                                              | `results/validation/*.csv`                                               |
+  | `package`      | tables, reports                                                         | `data/processed/datapackage/`, `par-datapackage.zip`, `par-diskette.zip` |
 
 `src/par/schemas/` holds one file per source, saying where each table's rows are and what each
 column means. See [`docs/datasets.md`](docs/datasets.md) for a description of each dataset, and

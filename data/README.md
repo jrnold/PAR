@@ -2,15 +2,15 @@
 
 ## Sources
 
-  | Directory            | Source                                                                                                                         | Retrieved                                      | Version          | License                           | How to fetch                                                        |
-  | -------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- | ---------------- | --------------------------------- | ------------------------------------------------------------------- |
-  | `raw/dtic-adm000368` | DTIC ADM000368, PAR Datadisk diskettes                                                                                         | Before 2013; the retrieval date isn't recorded | 2.1, 31 May 1994 | Public domain, US government work | `dvc pull`. Three diskettes' worth of files, without `BODASHIP.WQ!` |
-  | `manual/exports`     | CSV exports of the `.WQ!` spreadsheets, made through DOS Quattro Pro and LibreOffice in 2013, with eight later cleaned by hand | Git history since 2013                         | None             | ODC PDDL 1.0                      | In git. The conversion can't be rerun without the original software |
+  | Directory            | Source                                                                                                                                                            | Retrieved                                      | Version          | License                           | How to fetch                                                        |
+  | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ---------------- | --------------------------------- | ------------------------------------------------------------------- |
+  | `raw/dtic-adm000368` | DTIC ADM000368, PAR Datadisk diskettes                                                                                                                            | Before 2013; the retrieval date isn't recorded | 2.1, 31 May 1994 | Public domain, US government work | `dvc pull`. Three diskettes' worth of files, without `BODASHIP.WQ!` |
+  | `manual/exports`     | CSV exports of the `.WQ!` spreadsheets, made through DOS Quattro Pro and LibreOffice in 2013, with eight later cleaned by hand. Only `BODASHIP.csv` is still read | Git history since 2013                         | None             | ODC PDDL 1.0                      | In git                                                              |
 
 ## Tables
 
 One table per `.parquet` file in `processed/parquet/`, and one CSV per table in the data package.
-Every table has `source_row`, the row in its source file.
+Every table but `sources` has `source_row`, the row in its source file.
 
   | Table                | One row per                                                                 | Key           | Source   |
   | -------------------- | --------------------------------------------------------------------------- | ------------- | -------- |
@@ -41,6 +41,7 @@ Every table has `source_row`, the row in its source file.
   | `reisterk_division`  | Korean War US division-level operations                                     | `seq_no`      | REISTERK |
   | `reisterk_regiment`  | Korean War US regimental-level operations                                   | `seq_no`      | REISTERK |
   | `rmc`                | Ardennes and Lorraine battle days, 1944 to 1945                             | `seq_no`      | RMC      |
+  | `sources`            | Source of each table: its citation as fields, with dates parsed             | `source`      | All      |
   | `sp128`              | Battles from CORG-SP-128, 1741 to 1945                                      | `seq_no`      | SP128    |
   | `sp190`              | Battles from CORG-SP-190, 280 BC to 1944                                    | `seq_no`      | SP190    |
   | `voevodsk_vietnam`   | US strength and cumulative battle losses, Vietnam War                       | `seq_no`      | VOEVODSK |

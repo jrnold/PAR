@@ -1,24 +1,15 @@
 source: LIVRMORE
 dataset: LIVRMORE-1993
-export: LIVRMORE.csv
-citation: |
-  Data From (Title): Numbers and Losses in the Civil War in America, 1861-65.
-  Author: Livermore, Thomas L.
-  Organization: Kraus Reprint Co.
-  Address: Milwood, NY.
-  Publication Date: 1977.
-  Classification: UNCLASSIFIED.
-  Source Available From: Libraries.
-  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
-  Spreadsheet last revised: 30 October 1993
-notes: |
-  When the number of KIA is not separately available, the values under WIA are KIA + WIA.
-  ATK ID CODE = 2 if Union attacked, 1 if Confederates attacked.
-  WINA = +1 if attacker won, -1 if defender won.
+sheet: LIVRMORE.csv
+citation_rows: [1, 11]
+notes_rows: [83, 86]
 tables:
   - name: livrmore
     title: US Civil War battles, 1861 to 1865
-    rows: [2, 64]
+    description: The sheet stores these dates as 1961 to 1965 because spreadsheets of the time couldn't hold dates before 1900. This table subtracts 100 years.
+    rows: [18, 80]
+    missing: [NA]
+    date_year_offset: -100
     keys: [seq_no]
     checks:
       - {name: dates_ordered, expr: "start_date <= end_date"}
@@ -31,15 +22,16 @@ tables:
       - [2, start_date, date, Start date]
       - [3, end_date, date, End date]
       - [4, attacker, string, Attacking side]
-      - [5, attacker_strength, number, Attacker strength]
-      - [6, attacker_kia, number, Attacker killed in action]
-      - [7, attacker_wia, number, Attacker wounded in action]
-      - [8, attacker_kw, number, Attacker killed and wounded]
-      - [9, attacker_mia_pow, number, Attacker missing or captured]
-      - [10, defender_strength, number, Defender strength]
-      - [11, defender_kia, number, Defender killed in action]
-      - [12, defender_wia, number, Defender wounded in action]
-      - [13, defender_kw, number, Defender killed and wounded]
-      - [14, defender_mia_pow, number, Defender missing or captured]
-      - [15, wina, integer, +1 if the attacker won and -1 if the defender won]
-      - [16, win_side, string, Winning side]
+      - [5, attack_id_code, integer, 2 if the Union attacked and 1 if the Confederates attacked]
+      - [6, attacker_strength, number, Attacker strength]
+      - [7, attacker_kia, number, Attacker killed in action]
+      - [8, attacker_wia, number, Attacker wounded in action]
+      - [9, attacker_kw, number, Attacker killed and wounded]
+      - [10, attacker_mia_pow, number, Attacker missing or captured]
+      - [11, defender_strength, number, Defender strength]
+      - [12, defender_kia, number, Defender killed in action]
+      - [13, defender_wia, number, Defender wounded in action]
+      - [14, defender_kw, number, Defender killed and wounded]
+      - [15, defender_mia_pow, number, Defender missing or captured]
+      - [16, wina, integer, +1 if the attacker won and -1 if the defender won]
+      - [17, win_side, string, Winning side]

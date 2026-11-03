@@ -1,6 +1,6 @@
 source: COMP28ID
 dataset: COMPTON-1993 (COMP28ID)
-export: COMP28ID.csv
+sheet: COMP28ID.csv
 citation_rows: [1, 10]
 tables:
   - name: comp28id

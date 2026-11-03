@@ -1,6 +1,6 @@
 source: KELLEY
 dataset: KELLEY-1977
-export: KELLEY.csv
+sheet: KELLEY.csv
 citation_rows: [1, 11]
 tables:
   - name: kelley_korea

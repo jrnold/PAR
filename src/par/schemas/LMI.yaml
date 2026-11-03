@@ -4,6 +4,13 @@ fixed_width: {files: [LMI.001, LMI.002, LMI.003]}
 citation: |
   Kuhn, George W. S., "Ground Forces Battle Casualty Rate Patterns: The Empirical Evidence,"
   Logistics Management Institute Report FP703TR1, September 1989, 270 pp, UNCLASSIFIED.
+metadata:
+  title: "Ground Forces Battle Casualty Rate Patterns: The Empirical Evidence"
+  author: Kuhn, George W. S.
+  organization: Logistics Management Institute
+  publication_date: September 1989
+  classification: UNCLASSIFIED
+  note: Report FP703TR1, 270 pp
 tables:
   - name: lmi
     title: US strengths and casualties in Northwest Europe, 15 Jun 1944 to 30 Apr 1945

@@ -2,7 +2,7 @@
 
 Tidy tables and a Frictionless data package from the 1994 PAR data diskettes. See `README.md`.
 
-- The CSV exports in `data/manual/exports/` are the source for the spreadsheet tables, not the `.WQ!` files. Spreadsheet errors and the placeholders `--`, `?`, `??`, and `..` are null.
+- The `sheets` stage decodes the `.WQ!` files to `data/interim/sqz-csv/` with `sqz` (`cargo install quattro-sqz --locked`), and those CSVs are the source for the spreadsheet tables. `BODASHIP.WQ!` is lost, so that table alone reads `data/manual/exports/BODASHIP.csv`. Spreadsheet errors (`ERR`) and the placeholders `--`, `?`, `??`, and `..` are null.
 - Column meanings and row ranges live in `src/par/schemas/`. Change them there, not in generated files.
 - Parsing is strict. If a new value stops the build, add it to the column's `missing` list only if it really means missing.
 - Don't change a data value to make a check pass. Record a real correction in `data/manual/corrections.csv` (`table,source_row,column,old,new,reason`) and in `docs/known-errors.md`.

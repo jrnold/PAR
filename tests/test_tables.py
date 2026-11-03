@@ -9,6 +9,7 @@ import pytest
 import yaml
 
 from par import tables
+from par.sources import load_sources, parse_citation
 from par.zenodo import metadata
 
 
@@ -27,9 +28,9 @@ def parse(columns: list[Any], cells: list[list[str]], **table: object) -> tables
 
 
 def test_error_cells_become_null_and_are_logged() -> None:
-    out = parse([[0, "a", "integer", "A"]], [["1"], ["#VALUE!"]], keys=["source_row"])
+    out = parse([[0, "a", "integer", "A"]], [["1"], ["ERR"]], keys=["source_row"])
     assert out.arrow["a"].to_pylist() == [1, None]
-    assert out.error_cells == [{"table": "x", "source_row": 2, "column": "a", "value": "#VALUE!"}]
+    assert out.error_cells == [{"table": "x", "source_row": 2, "column": "a", "value": "ERR"}]
 
 
 @pytest.mark.parametrize("placeholder", ["", "--", "?", "??", ".."])
@@ -73,11 +74,56 @@ def test_ditto_copies_the_row_above() -> None:
 def test_year_offset_moves_civil_war_dates() -> None:
     out = parse(
         [[0, "d", "date", "D"]],
-        [["07/01/1961"], ["03/01/1965"]],
+        [["22463"], ["23802"]],
         keys=["source_row"],
         date_year_offset=-100,
     )
     assert out.arrow["d"].to_pylist() == [dt.date(1861, 7, 1), dt.date(1865, 3, 1)]
+
+
+def test_date_numbers_use_the_spreadsheet_epoch() -> None:
+    out = parse([[0, "d", "date", "D"]], [["14836"], ["16437"]], keys=["source_row"])
+    assert out.arrow["d"].to_pylist() == [dt.date(1940, 8, 13), dt.date(1944, 12, 31)]
+
+
+def test_time_fractions_become_times() -> None:
+    out = parse([[0, "t", "time", "T"]], [["0.4583333333333333"], ["0"]], keys=["source_row"])
+    assert out.arrow["t"].to_pylist() == [dt.time(11), dt.time(0)]
+
+
+def test_time_outside_a_day_stops_the_build() -> None:
+    with pytest.raises(ValueError, match="fraction of a day"):
+        parse([[0, "t", "time", "T"]], [["0.5"], ["1.5"]])
+
+
+def test_date_parts_are_joined() -> None:
+    column = {"parts": [0, 1, 2], "name": "d", "type": "date", "description": "D"}
+    out = parse([column], [["1619", "6", "10"], ["1620", "11", "8"]], keys=["source_row"])
+    assert out.arrow["d"].to_pylist() == [dt.date(1619, 6, 10), dt.date(1620, 11, 8)]
+
+
+@pytest.mark.parametrize("day", ["?", "ERR"])
+def test_unknown_day_gives_the_range_of_the_month(day: str) -> None:
+    columns = [
+        {"parts": [0, 1, 2], "partial": bound, "name": name, "type": "date", "description": "D"}
+        for bound, name in (("first", "low"), ("last", "high"))
+    ]
+    out = parse(columns, [["1702", "7", day], ["1704", "2", day]], keys=["source_row"])
+    assert out.arrow["low"].to_pylist() == [dt.date(1702, 7, 1), dt.date(1704, 2, 1)]
+    assert out.arrow["high"].to_pylist() == [dt.date(1702, 7, 31), dt.date(1704, 2, 29)]
+
+
+def test_split_date_ditto_copies_the_row_above() -> None:
+    column = {"parts": [0, 1, 2], "name": "d", "type": "date", "description": "D", "ditto": '"-"-"'}
+    out = parse([column], [["1674", "6", "16"], ['"', '"', '"']], keys=["source_row"])
+    assert out.arrow["d"].to_pylist() == [dt.date(1674, 6, 16)] * 2
+
+
+def test_text_missing_nulls_a_code_in_text_columns() -> None:
+    out = parse(
+        [[0, "a", "string", "A"]], [["NA"], ["x"]], keys=["source_row"], text_missing=["NA"]
+    )
+    assert out.arrow["a"].to_pylist() == [None, "x"]
 
 
 def test_summary_rows_reconcile_and_are_removed() -> None:
@@ -145,7 +191,7 @@ EXPECTED_ROWS = {
 
 
 def spreadsheet_tables() -> dict[str, tables.Table]:
-    """Parse every table whose source is in git."""
+    """Parse every spreadsheet table. Needs the `sheets` stage's output (`dvc pull`)."""
     corrections = tables.load_corrections()
     out = {}
     for path in sorted(tables.SCHEMA_DIR.glob("*.yaml")):
@@ -180,6 +226,122 @@ def test_civil_war_dates_are_in_the_civil_war() -> None:
     dates = spreadsheet_tables()["voevodsk_civil_war"].arrow["date"].to_pylist()
     assert min(dates).year == 1861
     assert max(dates).year == 1865
+
+
+def test_every_sheet_but_bodaship_comes_from_the_diskette() -> None:
+    sources = [yaml.safe_load(p.read_text()) for p in sorted(tables.SCHEMA_DIR.glob("*.yaml"))]
+    exports = {s["source"] for s in sources if "export" in s}
+    assert exports == {"BODASHIP"}
+
+
+def test_sheet_values_the_exports_lost_are_recovered() -> None:
+    parsed = spreadsheet_tables()
+    # The sheets leave these cells empty in a table's first or last rows, so they aren't all filled.
+    for table, column, filled in [
+        ("crete", "allied_cum_losses", 13),
+        ("crete", "german_survivors", 13),
+        ("iwojima", "usmc_cum_losses", 36),
+        ("iwojima", "usmc_survivors", 36),
+    ]:
+        values = [v for v in parsed[table].arrow[column].to_pylist() if v is not None]
+        assert len(values) >= filled, (table, column)
+    for table, column in [("crete", "allied_cum_losses"), ("iwojima", "usmc_cum_losses")]:
+        values = [v for v in parsed[table].arrow[column].to_pylist() if v is not None]
+        assert values == sorted(values), (table, column)
+
+
+def test_dodge_keeps_the_sheet_where_the_export_was_wrong() -> None:
+    rows = {r["seq_no"]: r for r in spreadsheet_tables()["dodge"].arrow.to_pylist()}
+    assert rows[77]["battle_name"] == "Soor"
+    assert rows[77]["start_date_min"] == dt.date(1745, 9, 30)
+    assert rows[120]["battle_name"] == "Neresheim"
+    assert (rows[9]["start_date_min"], rows[9]["start_date_max"]) == (
+        dt.date(1702, 7, 1),
+        dt.date(1702, 7, 31),
+    )
+
+
+def test_civil_war_sheets_are_moved_back_a_century() -> None:
+    dates = spreadsheet_tables()["livrmore"].arrow["start_date"].to_pylist()
+    assert dates[0] == dt.date(1861, 7, 21)
+
+
+@pytest.mark.parametrize("table", ["sp128", "sp190", "livrmore"])
+def test_wina_keeps_the_sheet_coding(table: str) -> None:
+    assert set(spreadsheet_tables()[table].arrow["wina"].to_pylist()) == {-1, 1}
+
+
+def test_hand_cleaned_sheets_take_their_citation_from_the_sheet() -> None:
+    parsed = spreadsheet_tables()
+    for table in ("bwshall", "dodge", "livrmore", "mottelay", "parmisc", "sp128", "sp190"):
+        assert "Prepared By: Dr. Robert L. Helmbold" in parsed[table].citation, table
+
+
+def test_citation_fields_join_wrapped_lines_but_not_colons_in_titles() -> None:
+    fields = parse_citation(
+        "Data From (Title): Historical Data and Lanchester's Theory of\n"
+        "Combat: Part II.\n"
+        "Author: Helmbold, Robert L.\n"
+        "Organization:\n"
+        "Spreadsheet last revised: 30 October 1993"
+    )
+    assert fields == {
+        "title": "Historical Data and Lanchester's Theory of Combat: Part II",
+        "author": "Helmbold, Robert L.",
+        "organization": None,
+        "last_revised": "30 October 1993",
+    }
+
+
+def test_citation_must_start_with_a_label() -> None:
+    with pytest.raises(ValueError, match="start with a label"):
+        parse_citation("Dougherty, Francis L., and so on")
+
+
+def source_rows() -> dict[str, dict[str, Any]]:
+    """Return the `sources` table by source."""
+    return {row["source"]: row for row in load_sources().arrow.to_pylist()}
+
+
+def test_sources_has_one_row_per_schema() -> None:
+    assert set(source_rows()) == {p.stem for p in tables.SCHEMA_DIR.glob("*.yaml")}
+
+
+def test_every_source_has_core_fields() -> None:
+    for name, row in source_rows().items():
+        for field in ("dataset", "title", "publication_date", "publication_year", "classification"):
+            assert row[field] is not None, (name, field)
+
+
+def test_every_table_is_listed_under_one_source() -> None:
+    listed = [t for row in source_rows().values() for t in row["tables"].split(", ")]
+    assert sorted(listed) == sorted(spreadsheet_tables() | {"ahart": 0, "lmi": 0})
+
+
+def test_datasets_match_the_schemas_except_the_livermore_spelling() -> None:
+    for path in tables.SCHEMA_DIR.glob("*.yaml"):
+        expected = yaml.safe_load(path.read_text())["dataset"]
+        found = source_rows()[path.stem]["dataset"]
+        assert found == expected or (path.stem, found) == ("LIVRMORE", "LIVERMORE-1993")
+
+
+def test_only_hand_typed_citations_are_marked_schema() -> None:
+    by_hand = {n for n, row in source_rows().items() if row["metadata_from"] == "schema"}
+    assert by_hand == {"AHART", "BODASHIP", "LMI"}
+
+
+def test_revision_dates_are_parsed() -> None:
+    rows = source_rows()
+    assert rows["DODGE"]["last_revised"] == dt.date(1994, 1, 11)
+    missing = {n for n, row in rows.items() if row["last_revised"] is None}
+    assert missing == {"AHART", "LMI"}
+
+
+def test_oralfore_revision_date_matches_the_number_in_the_sheet() -> None:
+    source = yaml.safe_load((tables.SCHEMA_DIR / "ORALFORE.yaml").read_text())
+    number = float(tables.clean_text(tables.read_rows(source)[10]).split()[-1])
+    expected = tables.DATE_EPOCH + dt.timedelta(days=int(number))
+    assert source_rows()["ORALFORE"]["last_revised"] == expected
 
 
 def test_zenodo_metadata_has_required_fields() -> None:

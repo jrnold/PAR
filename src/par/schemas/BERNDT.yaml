@@ -1,13 +1,13 @@
 source: BERNDT
 dataset: Berndt-1993
-export: BERNDT.csv
+sheet: BERNDT.csv
 citation_rows: [1, 12]
 tables:
   - name: berndt
     title: Selected land battles, 1741 to 1877
     rows: [19, 96]
     keys: [seq_no]
-    missing: ["??", "#VALUE!"]
+    missing: ["??"]
     checks:
       - {name: victor_total, expr: "victor_bloody + victor_cmia = victor_total"}
       - {name: loser_total, expr: "loser_bloody + loser_cmia = loser_total"}

@@ -1,6 +1,6 @@
 source: COMP7AD
 dataset: COMPTON-1993 (COMP7AD)
-export: COMP7AD.csv
+sheet: COMP7AD.csv
 citation_rows: [1, 10]
 tables:
   - name: comp7ad

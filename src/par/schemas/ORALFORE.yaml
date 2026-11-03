@@ -1,8 +1,11 @@
 source: ORALFORE
 dataset: ORALFORE-1972
-export: ORALFORE.csv
+sheet: ORALFORE.csv
 citation_rows: [1, 10]
 notes_rows: [378, 403]
+# Row 11 stores the revision date as the date number 32867.675, outside the citation block.
+metadata:
+  last_revised: 25 December 1989
 tables:
   - name: oralfore
     title: Opposed rates of advance of large forces in Europe, 1940 to 1944

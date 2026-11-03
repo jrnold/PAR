@@ -4,6 +4,13 @@ fixed_width: {files: [AHART.001, AHART.002, AHART.003, AHART.004]}
 citation: |
   Dougherty, Francis L., "Analysis of Historical Artillery Expenditures (AHART) Study-CY87."
   US Army Concepts Analysis Agency, Technical Paper CAA-TP-87-6, June 1987, UNCLASSIFIED.
+metadata:
+  title: Analysis of Historical Artillery Expenditures (AHART) Study-CY87
+  author: Dougherty, Francis L.
+  organization: US Army Concepts Analysis Agency
+  publication_date: June 1987
+  classification: UNCLASSIFIED
+  note: Technical Paper CAA-TP-87-6
 tables:
   - name: ahart
     title: Artillery expenditures by selected US units, World War II to Vietnam

@@ -6,6 +6,7 @@ import duckdb
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from par.sources import load_sources
 from par.tables import Table, load_tables
 
 PARQUET_DIR = Path("data/processed/parquet")
@@ -66,7 +67,7 @@ def failing_rows(table: Table) -> list[dict[str, object]]:
 
 def build_tables() -> None:
     """Parse all tables and write them with their issue logs."""
-    tables = load_tables()
+    tables = [*load_tables(), load_sources()]
     errors: list[dict[str, object]] = []
     controls: list[dict[str, object]] = []
     checks: list[dict[str, object]] = []

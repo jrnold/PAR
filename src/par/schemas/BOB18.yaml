@@ -1,6 +1,6 @@
 source: BOB18
 dataset: BOB18-1993
-export: BOB18.csv
+sheet: BOB18.csv
 citation_rows: [1, 11]
 tables:
   - name: bob18

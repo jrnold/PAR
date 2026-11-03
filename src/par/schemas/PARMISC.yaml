@@ -1,28 +1,13 @@
 source: PARMISC
 dataset: PARMISC-1993
-export: PARMISC.csv
-citation: |
-  Dataset: PARMISC-1993
-  Data From: Miscellaneous sources
-  Publication Date: 1993
-  Classification: UNCLASSIFIED
-  Sources Available From: Libraries
-  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
-  Last Revised: 10 January 1994
-notes: |
-  References (ref_no):
-  1. "America's First Battles: 1776-1965," Charles E. Heller & William A. Stofft (eds), University Press of Kansas, 1986.
-  2. "The Age of Voltaire," Will & Ariel Durant, Simon and Schuster, NY, 1965.
-  3. "Dictionary of Battles," David Eggenberger, Thomas Y. Crowell Co., NY, 1967.
-  4. "A Dictionary of Battles (1816-1976)," Brigadier Peter Young, Mayflower Books, NY, NY 10022, 1978.
-  5. "Kursk: The Clash of Armor," Geoffrey Jukes, Ballantine's Illustrated History of WWII, Battle Book No. 7, Ballantine Books, NY, NY, 1968.
-  6. Strategy and Tactics, No 49, Mar/Apr 1975.
-  7. "History of US Naval Operations in World War II," Samuel Eliot Morison, Little, Brown and Co, Boston, 1947-1960.
-  8. "Victory in Papua," Samuel Wilks, Office Chief of Military History, Dept. of the Army, (Green Book Series).
+sheet: PARMISC.csv
+citation_rows: [1, 10]
+notes_rows: [226, 251]
 tables:
   - name: parmisc
     title: Battles from miscellaneous sources, 1741 to 1965
-    rows: [2, 210]
+    rows: [16, 224]
+    text_missing: [NA]
     keys: [seq_no]
     checks:
       - {name: attacker_bloody, expr: "attacker_dead + attacker_wounded = attacker_bloody"}

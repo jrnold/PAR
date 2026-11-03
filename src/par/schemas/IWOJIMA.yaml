@@ -1,16 +1,14 @@
 source: IWOJIMA
 dataset: IWOJIMA-1993
-export: IWOJIMA.csv
+sheet: IWOJIMA.csv
 citation_rows: [1, 10]
 notes_rows: [12, 14]
 extra_notes_rows: [58, 66]
 tables:
   - name: iwojima
     title: Iwo Jima daily strengths and losses, 19 Feb to 27 Mar 1945
-    description: The USMC cumulative loss and survivor columns failed in the 2013 export.
     rows: [18, 54]
     keys: [day_number]
-    missing: ["#VALUE!"]
     controls:
       - {row: 56, label: Totals, columns: {4: usmc_landings, 5: usmc_loss}}
     columns:

@@ -1,6 +1,6 @@
 source: REISTERK
 dataset: REISTERK-1986
-export: REISTERK.csv
+sheet: REISTERK.csv
 citation_rows: [1, 11]
 notes_rows: [123, 141]
 tables:

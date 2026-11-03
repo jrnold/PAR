@@ -1,21 +1,11 @@
 source: BWSHALL
 dataset: BWSH-1993 (BWSHALL)
-export: BWSHALL.csv
-citation: |
-  Dataset: BWSH-1993 (BWSHALL)
-  Data From: Militar-Historisches Kriegslexicon (1618-1905)
-  Author: Gaston Bodart
-  Organization: C.W. Stern, publisher
-  Address: Vienna and Leipzig
-  Publication Date: 1908
-  Classification: UNCLASSIFIED
-  Source Available From: Libraries
-  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
-  Last Revised: 15 November 1993
+sheet: BWSHALL.csv
+citation_rows: [1, 10]
 tables:
   - name: bwshall
     title: Land battles, 1619 to 1905
-    rows: [2, 1088]
+    rows: [16, 1102]
     keys: [seq_no]
     checks:
       - {name: dates_ordered, expr: "start_date <= end_date"}
@@ -32,22 +22,22 @@ tables:
       - [2, item, integer, Item number on the page]
       - [3, battle_type, string, Type of battle in the source]
       - [4, battle_name, string, Battle name]
-      - [5, start_date, date, Start date]
-      - [6, end_date, date, End date]
-      - [7, duration_days, number, "Duration in days. The 2013 CSV mislabels this column 'Sequence No.'"]
-      - [8, winner_a, string, Principal force component of the winner]
-      - [9, winner_b, string, Secondary force component of the winner]
-      - [10, loser_a, string, Principal force component of the loser]
-      - [11, loser_b, string, Secondary force component of the loser]
-      - [12, winner_strength, number, Winner initial strength]
-      - [13, loser_strength, number, Loser initial strength]
-      - [14, winner_dead, number, Winner dead]
-      - [15, winner_wounded, number, Winner wounded]
-      - [16, winner_bloody, number, Winner bloody losses]
-      - [17, winner_mia_pow, number, Winner missing or captured]
-      - [18, winner_losses, number, Winner total losses]
-      - [19, loser_dead, number, Loser dead]
-      - [20, loser_wounded, number, Loser wounded]
-      - [21, loser_bloody, number, Loser bloody losses]
-      - [22, loser_mia_pow, number, Loser missing or captured]
-      - [23, loser_losses, number, Loser total losses]
+      - {parts: [5, 6, 7], name: start_date, type: date, description: Start date}
+      - {parts: [8, 9, 10], name: end_date, type: date, description: End date}
+      - [11, duration_days, number, Duration in days]
+      - [12, winner_a, string, Principal force component of the winner]
+      - [13, winner_b, string, Secondary force component of the winner]
+      - [14, loser_a, string, Principal force component of the loser]
+      - [15, loser_b, string, Secondary force component of the loser]
+      - [16, winner_strength, number, Winner initial strength]
+      - [17, loser_strength, number, Loser initial strength]
+      - [18, winner_dead, number, Winner dead]
+      - [19, winner_wounded, number, Winner wounded]
+      - [20, winner_bloody, number, Winner bloody losses]
+      - [21, winner_mia_pow, number, Winner missing or captured]
+      - [22, winner_losses, number, Winner total losses]
+      - [23, loser_dead, number, Loser dead]
+      - [24, loser_wounded, number, Loser wounded]
+      - [25, loser_bloody, number, Loser bloody losses]
+      - [26, loser_mia_pow, number, Loser missing or captured]
+      - [27, loser_losses, number, Loser total losses]

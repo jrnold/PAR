@@ -58,11 +58,15 @@ stages:
   tables:
     cmd: uv run --frozen python -m scripts.build_tables
     deps:
-    - path: data/manual/exports
+    - path: data/interim/sqz-csv
       hash: md5
-      md5: 3cfb7e790e0a06ceabca9b05c8ecff14.dir
-      size: 746257
-      nfiles: 26
+      md5: a78cf8b6393a80eda17d55a7be0f1f62.dir
+      size: 703896
+      nfiles: 25
+    - path: data/manual/exports/BODASHIP.csv
+      hash: md5
+      md5: 8e06b4171c1e0ae972d300e972de5dd2
+      size: 20837
     - path: data/raw/dtic-adm000368
       hash: md5
       md5: a27241b60c6ebae3963c1863b66df5c6.dir
@@ -78,88 +82,96 @@ stages:
       size: 160
     - path: src/par/build.py
       hash: md5
-      md5: be83a5fcc69efe2f7bfb41372a4051f7
-      size: 3890
+      md5: 778c95a449b729501f629f68565c54b3
+      size: 3946
     - path: src/par/schemas
       hash: md5
-      md5: ac8574f52af5c22a9051d9fb1656a1f3.dir
-      size: 57439
+      md5: f974816482fcf2b6fabf37b704a03bbd.dir
+      size: 54578
       nfiles: 28
+    - path: src/par/sources.py
+      hash: md5
+      md5: a1df3dd580d7666ab344d99f8a036ab0
+      size: 5728
     - path: src/par/tables.py
       hash: md5
-      md5: ea55c09c6ed58d834fdd84d3f0cc1b49
-      size: 12084
+      md5: 972e5d92a9711c1498ccab18f5997b09
+      size: 13564
     outs:
     - path: data/interim/check_failures.parquet
       hash: md5
-      md5: 8542677605efc259a6c9905404eef602
-      size: 1948
+      md5: dbe15e0fa9abf29b11027b46dcd17201
+      size: 1945
     - path: data/interim/control_totals.parquet
       hash: md5
-      md5: bec32bf8b46eff34371e26b44e2a1d70
-      size: 2983
+      md5: 80ccab5e74a4dc87e77c42082fe4908b
+      size: 2976
     - path: data/interim/error_cells.parquet
       hash: md5
-      md5: 72848da8a250d1fd2c963a4262369a46
-      size: 3229
+      md5: 7343f207349147d422049b93882796e8
+      size: 7093
     - path: data/processed/parquet
       hash: md5
-      md5: a726b8d2056c5fe3761a7186f0df987f.dir
-      size: 574727
-      nfiles: 36
+      md5: e50fc106bbe09bd2337dcb4f9516d804.dir
+      size: 585748
+      nfiles: 37
   validate:
     cmd: uv run --frozen python -m scripts.validate
     deps:
     - path: data/interim/check_failures.parquet
       hash: md5
-      md5: 8542677605efc259a6c9905404eef602
-      size: 1948
+      md5: dbe15e0fa9abf29b11027b46dcd17201
+      size: 1945
     - path: data/interim/control_totals.parquet
       hash: md5
-      md5: bec32bf8b46eff34371e26b44e2a1d70
-      size: 2983
+      md5: 80ccab5e74a4dc87e77c42082fe4908b
+      size: 2976
     - path: data/interim/error_cells.parquet
       hash: md5
-      md5: 72848da8a250d1fd2c963a4262369a46
-      size: 3229
+      md5: 7343f207349147d422049b93882796e8
+      size: 7093
     - path: scripts/validate.py
       hash: md5
       md5: 736fdb9c62edf3b9ef4af56df3460c08
       size: 152
     - path: src/par/build.py
       hash: md5
-      md5: be83a5fcc69efe2f7bfb41372a4051f7
-      size: 3890
+      md5: 778c95a449b729501f629f68565c54b3
+      size: 3946
     outs:
     - path: results/validation/check_failures.csv
       hash: md5
-      md5: 40187bec8bd008527a3fc6247cb98fbb
-      size: 1329
+      md5: 15d22827951b51ff05d1be3ac61bfe5c
+      size: 1330
     - path: results/validation/control_total_mismatches.csv
       hash: md5
       md5: a2f9cda767dcf1ea695206bb1f132b09
       size: 53
     - path: results/validation/error_cells.csv
       hash: md5
-      md5: 04a8473285a64274a4643e863ef03633
-      size: 25605
+      md5: 127bb965ef99a6e7434e29ccd32bf87e
+      size: 63352
     - path: results/validation/summary.csv
       hash: md5
-      md5: 893621165fef7ccf63237bbc1b3fe693
-      size: 488
+      md5: 316d733e7db25dd56f6a74bc9bb13e42
+      size: 491
   package:
     cmd: uv run --frozen python -m scripts.package
     deps:
-    - path: data/manual/exports
+    - path: data/interim/sqz-csv
       hash: md5
-      md5: 3cfb7e790e0a06ceabca9b05c8ecff14.dir
-      size: 746257
-      nfiles: 26
+      md5: a78cf8b6393a80eda17d55a7be0f1f62.dir
+      size: 703896
+      nfiles: 25
+    - path: data/manual/exports/BODASHIP.csv
+      hash: md5
+      md5: 8e06b4171c1e0ae972d300e972de5dd2
+      size: 20837
     - path: data/processed/parquet
       hash: md5
-      md5: a726b8d2056c5fe3761a7186f0df987f.dir
-      size: 574727
-      nfiles: 36
+      md5: e50fc106bbe09bd2337dcb4f9516d804.dir
+      size: 585748
+      nfiles: 37
     - path: data/raw/dtic-adm000368
       hash: md5
       md5: a27241b60c6ebae3963c1863b66df5c6.dir
@@ -187,32 +199,58 @@ stages:
       size: 111809
     - path: scripts/package.py
       hash: md5
-      md5: dd4e0e5f07098fd66eb787f048e91487
-      size: 207
+      md5: e44fce854a473e74e484d5eb1feb228c
+      size: 263
     - path: src/par/package.py
       hash: md5
-      md5: 726eef812ad94663a8b4e2b034c6c40d
-      size: 4872
+      md5: 2b33b7f42f2573f597a544f97fce982c
+      size: 5049
     - path: src/par/schemas
       hash: md5
-      md5: ac8574f52af5c22a9051d9fb1656a1f3.dir
-      size: 57439
+      md5: f974816482fcf2b6fabf37b704a03bbd.dir
+      size: 54578
       nfiles: 28
+    - path: src/par/sources.py
+      hash: md5
+      md5: a1df3dd580d7666ab344d99f8a036ab0
+      size: 5728
     - path: src/par/tables.py
       hash: md5
-      md5: ea55c09c6ed58d834fdd84d3f0cc1b49
-      size: 12084
+      md5: 972e5d92a9711c1498ccab18f5997b09
+      size: 13564
     outs:
     - path: data/processed/datapackage
       hash: md5
-      md5: ced629edd8591b6152b630250610055e.dir
-      size: 16711247
-      nfiles: 41
+      md5: 4ab5a35805b19788cf34035e665004ad.dir
+      size: 16730624
+      nfiles: 42
     - path: data/processed/par-datapackage.zip
       hash: md5
-      md5: 29c2a660ca0d1323ab6e65e73f292e16
-      size: 14070085
+      md5: ffe22e2dae4afb165b3e43793105bbb5
+      size: 14077163
     - path: data/processed/par-diskette.zip
       hash: md5
       md5: b0ac5fd833e0387e96ca92d8f90555e7
       size: 722482
+  sheets:
+    cmd: uv run --frozen python -m scripts.decode_sheets
+    deps:
+    - path: data/raw/dtic-adm000368
+      hash: md5
+      md5: a27241b60c6ebae3963c1863b66df5c6.dir
+      size: 3168730
+      nfiles: 33
+    - path: scripts/decode_sheets.py
+      hash: md5
+      md5: 5f36d477edc6466f6440be2d408ea57d
+      size: 144
+    - path: src/par/sqz.py
+      hash: md5
+      md5: bd4b12255a8d3909dafecbbabc5a2a8b
+      size: 881
+    outs:
+    - path: data/interim/sqz-csv
+      hash: md5
+      md5: a78cf8b6393a80eda17d55a7be0f1f62.dir
+      size: 703896
+      nfiles: 25
