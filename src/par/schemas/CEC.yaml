@@ -1,6 +1,6 @@
 source: CEC
 dataset: CEC-1993
-export: CEC.csv
+sheet: CEC.csv
 citation_rows: [1, 10]
 notes_rows: [99, 377]
 tables:

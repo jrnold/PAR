@@ -33,13 +33,25 @@ stages:
     - docs/ocr/ADA294527.md:
         cache: false
 
+  # Needs the `sqz` command: cargo install quattro-sqz --locked
+  sheets:
+    cmd: uv run --frozen python -m scripts.decode_sheets
+    deps:
+    - data/raw/dtic-adm000368
+    - src/par/sqz.py
+    - scripts/decode_sheets.py
+    outs:
+    - data/interim/sqz-csv
+
   tables:
     cmd: uv run --frozen python -m scripts.build_tables
     deps:
     - data/raw/dtic-adm000368
-    - data/manual/exports
+    - data/interim/sqz-csv
+    - data/manual/exports/BODASHIP.csv
     - src/par/tables.py
     - src/par/build.py
+    - src/par/sources.py
     - src/par/schemas
     - scripts/build_tables.py
     - requirements.lock
@@ -72,13 +84,15 @@ stages:
     deps:
     - data/processed/parquet
     - data/raw/dtic-adm000368
-    - data/manual/exports
+    - data/interim/sqz-csv
+    - data/manual/exports/BODASHIP.csv
     - docs/sources/ADA279069.pdf
     - docs/sources/ADA294527.pdf
     - docs/ocr/ADA279069.md
     - docs/ocr/ADA294527.md
     - src/par/package.py
     - src/par/tables.py
+    - src/par/sources.py
     - src/par/schemas
     - scripts/package.py
     - requirements.lock

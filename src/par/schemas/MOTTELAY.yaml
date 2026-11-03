@@ -1,20 +1,11 @@
 source: MOTTELAY
 dataset: MOTTELAY-1993
-export: MOTTELAY.csv
-citation: |
-  Data From (Title): The Soldier in Our Civil War: Columbian Memorial Edition.
-  Author: Mottelay, Paul F., and T. Campbell-Copeland.
-  Organization: Stanley-Bradley Publishing Co.
-  Address: Atlanta and New York.
-  Publication Date: 1893.
-  Classification: UNCLASSIFIED.
-  Source Available From: Libraries.
-  Prepared By: Dr. Robert L. Helmbold, US Army Concepts Analysis Agency
-  Spreadsheet last revised: 4 November 1993
+sheet: MOTTELAY.csv
+citation_rows: [1, 12]
 tables:
   - name: mottelay
     title: US Civil War engagements, 1861 to 1865
-    rows: [2, 121]
+    rows: [17, 136]
     keys: [seq_no]
     checks:
       - {name: federal_kw, expr: "federal_killed + federal_wounded = federal_kw"}
@@ -24,22 +15,22 @@ tables:
     columns:
       - [0, seq_no, integer, Sequence number]
       - [1, page, integer, Source page]
-      - [2, date, date, Date]
-      - [3, event, string, Engagement type in the source]
-      - [4, location, string, Location]
-      - [5, duration_hours, number, Duration in hours]
-      - [6, federal_force, number, Federal force size]
-      - [7, confed_force, number, Confederate force size]
-      - [8, federal_killed, number, Federal killed]
-      - [9, confed_killed, number, Confederate killed]
-      - [10, federal_wounded, number, Federal wounded]
-      - [11, confed_wounded, number, Confederate wounded]
-      - [12, federal_kw, number, Federal killed and wounded]
-      - [13, confed_kw, number, Confederate killed and wounded]
-      - [14, federal_pow, number, Federal prisoners of war]
-      - [15, confed_pow, number, Confederate prisoners of war]
-      - [16, federal_mia, number, Federal missing in action]
-      - [17, confed_mia, number, Confederate missing in action]
-      - [18, federal_tbc, number, Federal total battle casualties]
-      - [19, confed_tbc, number, Confederate total battle casualties]
-      - [20, advantage, string, Side with the advantage]
+      - {parts: [2, 3, 4], format: "%Y-%b-%d", name: date, type: date, description: Date}
+      - [5, event, string, Engagement type in the source]
+      - [6, location, string, Location]
+      - [7, duration_hours, number, Duration in hours]
+      - [8, federal_force, number, Federal force size]
+      - [9, confed_force, number, Confederate force size]
+      - [10, federal_killed, number, Federal killed]
+      - [11, confed_killed, number, Confederate killed]
+      - [12, federal_wounded, number, Federal wounded]
+      - [13, confed_wounded, number, Confederate wounded]
+      - [14, federal_kw, number, Federal killed and wounded]
+      - [15, confed_kw, number, Confederate killed and wounded]
+      - [16, federal_pow, number, Federal prisoners of war]
+      - [17, confed_pow, number, Confederate prisoners of war]
+      - [18, federal_mia, number, Federal missing in action]
+      - [19, confed_mia, number, Confederate missing in action]
+      - [20, federal_tbc, number, Federal total battle casualties]
+      - [21, confed_tbc, number, Confederate total battle casualties]
+      - [22, advantage, string, Side with the advantage]

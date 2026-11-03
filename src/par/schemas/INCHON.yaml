@@ -1,6 +1,6 @@
 source: INCHON
 dataset: INCHON-1993
-export: INCHON.csv
+sheet: INCHON.csv
 citation_rows: [1, 12]
 notes: |
   Row 21 (day 4, 18 September 1950) carries the mark "(?)" after its last column in the sheet.

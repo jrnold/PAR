@@ -1,6 +1,6 @@
 source: POGOGORO
 dataset: POGOGORO-1993
-export: POGOGORO.csv
+sheet: POGOGORO.csv
 citation_rows: [1, 11]
 notes_rows: [28, 30]
 tables:

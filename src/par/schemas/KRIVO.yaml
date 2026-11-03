@@ -1,6 +1,6 @@
 source: KRIVO
 dataset: KRIVO-1993
-export: KRIVO.csv
+sheet: KRIVO.csv
 citation_rows: [1, 12]
 notes_rows: [201, 222]
 tables:
@@ -8,7 +8,7 @@ tables:
     title: Soviet strategic operations on the Eastern Front, 1941 to 1945
     rows: [19, 198]
     keys: [seq_no]
-    missing: ["--", "#VALUE!"]
+    missing: ["--"]
     checks:
       - {name: dates_ordered, expr: "start_date <= end_date"}
       - {name: total_sum, expr: "permanent_losses + medical_losses = total_losses"}

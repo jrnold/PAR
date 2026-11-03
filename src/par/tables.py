@@ -1,16 +1,16 @@
-"""Turn the diskette's spreadsheet exports and fixed-width files into typed tables.
+"""Turn the diskette's decoded spreadsheets and fixed-width files into typed tables.
 
 Each file in `schemas/` says where a table's rows are in its source and what each column means.
 Parsing is strict: a value that doesn't fit its column type stops the build unless the schema lists
 it as missing. Spreadsheet error strings become null and are logged, so nothing is dropped silently.
 """
 
+import calendar
 import csv
 import datetime as dt
-import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pyarrow as pa
 import yaml
@@ -19,11 +19,15 @@ import yaml
 type Cell = int | float | str | dt.date | dt.time | None
 
 SCHEMA_DIR = Path(__file__).parent / "schemas"
+# Sheets decoded from the diskette's `.WQ!` files by the `sheets` stage.
+SHEET_DIR = Path("data/interim/sqz-csv")
+# BODASHIP's `.WQ!` file is lost, so a 2013 export is all there is of it.
 EXPORT_DIR = Path("data/manual/exports")
 RAW_DIR = Path("data/raw/dtic-adm000368")
 CORRECTIONS = Path("data/manual/corrections.csv")
 
-ERROR_TOKENS = {"#VALUE!", "#N/A", "#DIV/0!", "#REF!", "#NAME?", "Err:511", "Err:522"}
+# How `sqz` writes every stored spreadsheet error, including NA.
+ERROR_VALUE = "ERR"
 # Placeholders for an unknown or empty value, null in every column. Other codes, such as CEC's N/A
 # or ORALFORE's NR, keep their documented meaning in coded columns; see each schema's `missing`.
 PLACEHOLDERS = {"", "--", "?", "??", ".."}
@@ -34,7 +38,10 @@ ARROW_TYPES = {
     "date": pa.date32(),
     "time": pa.time32("s"),
 }
-DATE_FORMATS = ("%m/%d/%Y", "%Y-%m-%d")
+# Day zero of Quattro Pro's date numbers, for dates from March 1900 on.
+DATE_EPOCH = dt.date(1899, 12, 30)
+# What the sheets hold in a date's day column when the source gives no day.
+UNKNOWN_DAYS = {"?", "ERR"}
 
 
 @dataclass
@@ -65,8 +72,28 @@ def normalize_column(raw: list[Any] | dict[str, Any], fixed: bool) -> dict[str, 
     }
 
 
+def partial_date(value: str, bound: str) -> dt.date:
+    """Read `year-month-day`, taking an unknown day as the first or last of the month."""
+    year, month, day = value.split("-")
+    if day in UNKNOWN_DAYS:
+        day = "1" if bound == "first" else str(calendar.monthrange(int(year), int(month))[1])
+    return dt.date(int(year), int(month), int(day))
+
+
+def parse_serial_time(value: str) -> dt.time:
+    """Convert a spreadsheet time, stored as a fraction of a day."""
+    fraction = float(value)
+    if not 0 <= fraction < 1:
+        raise ValueError(f"time {value!r} isn't a fraction of a day")
+    # Times are stored to the second, so rounding only removes floating-point noise.
+    hours, seconds = divmod(round(fraction * 86400), 3600)
+    return dt.time(hours, *divmod(seconds, 60))
+
+
 def parse_date(value: str, column: dict[str, Any]) -> dt.date:
     """Parse a date using the column's format options, or the sheet's usual formats."""
+    if "partial" in column:
+        return partial_date(value, column["partial"])
     if "day_of" in column:
         return dt.date.fromisoformat(f"{column['day_of']}-{int(value):02d}")
     if "year_by_month" in column:
@@ -74,15 +101,9 @@ def parse_date(value: str, column: dict[str, Any]) -> dt.date:
         return parsed.replace(year=column["year_by_month"][value[:3]]).date()
     if "format" in column:
         return dt.datetime.strptime(value, column["format"]).date()
-    for fmt in DATE_FORMATS:
-        try:
-            return dt.datetime.strptime(value, fmt).date()
-        except ValueError:
-            continue
-    match = re.fullmatch(r"(\d{3,4})-(\d{1,2})-(\d{1,2})", value)
-    if match:
-        return dt.date(*map(int, match.groups()))
-    raise ValueError(f"unrecognized date {value!r}")
+    if value.isdigit():
+        return DATE_EPOCH + dt.timedelta(days=int(value))
+    return dt.datetime.strptime(value, "%Y-%m-%d").date()
 
 
 def shift_year(value: dt.date, years: int) -> dt.date:
@@ -106,7 +127,7 @@ def parse_value(value: str, column: dict[str, Any], offset: int) -> Cell:
         parsed = parse_date(value, column)
         return shift_year(parsed, offset) if offset else parsed
     if kind == "time":
-        return dt.datetime.strptime(value, "%I:%M:%S %p").time()
+        return parse_serial_time(value)
     raise ValueError(f"unknown column type {kind}")
 
 
@@ -132,7 +153,8 @@ def read_rows(spec: dict[str, Any]) -> list[list[str]]:
             text = (RAW_DIR / name).read_bytes().decode("ascii").replace("\x1a", "")
             lines.extend(text.splitlines())
         return [[line] for line in lines]
-    with (EXPORT_DIR / spec["export"]).open(newline="", encoding="latin-1") as f:
+    path = SHEET_DIR / spec["sheet"] if "sheet" in spec else EXPORT_DIR / spec["export"]
+    with path.open(newline="", encoding="latin-1") as f:
         return [list(map(str, row)) for row in csv.reader(f)]
 
 
@@ -152,6 +174,12 @@ def split_fixed(line: str, columns: list[dict[str, Any]]) -> list[str]:
         cells.append(line[start : start + column["width"]])
         start += column["width"]
     return cells
+
+
+def read_cell(cells: list[str], column: dict[str, Any]) -> str:
+    """Return a column's cell, joining a date split over several sheet columns with hyphens."""
+    positions = cast("list[int]", column.get("parts") or [column["col"]])
+    return "-".join(cells[position].strip() for position in positions)
 
 
 def is_summary(cells: list[str], match: dict[int, list[str]]) -> bool:
@@ -200,6 +228,7 @@ def parse_table(
     columns = [normalize_column(c, fixed) for c in table["columns"]]
     first, last = table.get("rows", [1, len(rows)])
     missing = set(table.get("missing", []))
+    text_missing = set(table.get("text_missing", []))
     offset = table.get("date_year_offset", 0)
     summary = table.get("summary_rows")
     data: dict[str, list[Any]] = {"source_row": []} | {c["name"]: [] for c in columns}
@@ -229,7 +258,7 @@ def parse_table(
         data["source_row"].append(row_no)
         for index, column in enumerate(columns):
             name = column["name"]
-            cell = (cells[index] if fixed else cells[column["col"]]).strip()
+            cell = (cells[index] if fixed else read_cell(cells, column)).strip()
             fix = corrections.get((table["name"], row_no, name))
             if fix is not None:
                 if cell != fix["old"]:
@@ -238,7 +267,8 @@ def parse_table(
                         f"{fix['old']!r}, found {cell!r}"
                     )
                 cell = fix["new"]
-            if cell in ERROR_TOKENS or cell in column.get("error", []):
+            cell = "" if cell in text_missing else cell
+            if cell == ERROR_VALUE:
                 errors.append(
                     {"table": table["name"], "source_row": row_no, "column": name, "value": cell}
                 )

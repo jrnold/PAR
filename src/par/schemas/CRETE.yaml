@@ -1,17 +1,16 @@
 source: CRETE
 dataset: CRETE-1993
-export: CRETE.csv
+sheet: CRETE.csv
 citation_rows: [1, 11]
 notes_rows: [36, 40]
 tables:
   - name: crete
     title: Battle of Crete daily strengths and losses
     description: >-
-      Engel's model values. The loss and survivor columns were iterative formulas that the 2013
-      LibreOffice export could not evaluate; see results/validation/error_cells.csv.
+      Engel's model values. The loss and survivor columns are iterative formulas; these are the
+      results stored in the sheet.
     rows: [16, 29]
     keys: [day_number]
-    missing: ["Err:522"]
     columns:
       - [0, day_number, integer, Day number]
       - [3, d_day_plus, integer, Day relative to D-Day]

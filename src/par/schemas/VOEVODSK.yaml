@@ -1,13 +1,12 @@
 source: VOEVODSK
 dataset: VOEVODSK-1993
-export: VOEVODSK.csv
+sheet: VOEVODSK.csv
 citation_rows: [1, 10]
 tables:
   - name: voevodsk_vietnam
     title: US strength and cumulative battle losses, Vietnam War
     rows: [16, 39]
     keys: [seq_no]
-    missing: ["#DIV/0!"]
     columns:
       - [0, seq_no, integer, Sequence number]
       - [2, date, date, Date]

@@ -1,6 +1,6 @@
 source: ADE
 dataset: ADE-1992
-export: ADE.csv
+sheet: ADE.csv
 citation_rows: [1, 9]
 notes_rows: [411, 435]
 tables:
@@ -8,7 +8,6 @@ tables:
     title: Ardennes Campaign division-level engagements, 16 Dec 1944 to 16 Jan 1945
     rows: [17, 409]
     keys: [seq_no]
-    missing: ["#VALUE!"]
     checks:
       - {name: day_in_range, expr: "day between 1 and 32"}
       - {name: bloody_le_tbc_german, expr: "german_bloody <= german_tbc + 0.5"}

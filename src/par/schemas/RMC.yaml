@@ -1,14 +1,15 @@
 source: RMC
 dataset: RMC-1993
-export: RMC.csv
+sheet: RMC.csv
 citation_rows: [1, 11]
 notes_rows: [274, 344]
 tables:
   - name: rmc
     title: Ardennes and Lorraine battle days, 1944 to 1945
     description: >-
-      The attrition columns hold -INF in many rows, which the sheet doesn't explain. It reads
-      like a spreadsheet log of zero, so those cells are null here and listed in the error report.
+      The attrition columns hold a stored error in many rows, which the sheet doesn't explain. It
+      reads like a spreadsheet log of zero, so those cells are null here and listed in the error
+      report.
     rows: [17, 266]
     keys: [seq_no]
     columns:
@@ -34,9 +35,9 @@ tables:
       - [39, antiarmor_ger, number, "German antiarmor index"]
       - [41, mech_us, number, "Percentage of US infantry mechanized"]
       - [43, mech_ger, number, "Percentage of German infantry mechanized"]
-      - {col: 45, name: tank_attrition_us, type: number, description: "US armor loss rate per thousand vehicles per day", error: ["-INF"]}
-      - {col: 47, name: tank_attrition_ger, type: number, description: "German armor loss rate per thousand vehicles per day", error: ["-INF"]}
-      - {col: 49, name: pers_attrition_us, type: number, description: "US personnel casualty rate per thousand per day", error: ["-INF"]}
-      - {col: 51, name: pers_attrition_ger, type: number, description: "German personnel casualty rate per thousand per day", error: ["-INF"]}
+      - {col: 45, name: tank_attrition_us, type: number, description: "US armor loss rate per thousand vehicles per day"}
+      - {col: 47, name: tank_attrition_ger, type: number, description: "German armor loss rate per thousand vehicles per day"}
+      - {col: 49, name: pers_attrition_us, type: number, description: "US personnel casualty rate per thousand per day"}
+      - {col: 51, name: pers_attrition_ger, type: number, description: "German personnel casualty rate per thousand per day"}
       - [53, advance_km, number, "Penetration distance in km"]
       - [55, frontage_km, number, "Frontage attacked in km"]

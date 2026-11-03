@@ -1,6 +1,6 @@
 source: WESTWALL
 dataset: WESTWALL-1993
-export: WESTWALL.csv
+sheet: WESTWALL.csv
 citation_rows: [1, 13]
 notes_rows: [34, 51]
 tables:
@@ -8,7 +8,6 @@ tables:
     title: Westwall combat phases, 2 to 7 Oct 1944
     rows: [19, 30]
     keys: [seq_no]
-    missing: ["#N/A"]
     controls:
       - {row: 32, label: Overall, columns: {5: duration_hours, 11: us_losses, 12: german_losses, 13: us_reinforcements, 14: german_reinforcements}}
     columns:

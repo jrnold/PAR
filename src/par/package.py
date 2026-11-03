@@ -16,7 +16,7 @@ PARQUET_DIR = Path("data/processed/parquet")
 PACKAGE_DIR = Path("data/processed/datapackage")
 PACKAGE_ZIP = Path("data/processed/par-datapackage.zip")
 DISKETTE_ZIP = Path("data/processed/par-diskette.zip")
-VERSION = "1.0.0"
+VERSION = "2.0.0"
 # Keep zip files byte-identical between builds, so downstream DVC stages don't rerun.
 FIXED_TIME = (1994, 5, 31, 0, 0, 0)
 
@@ -45,15 +45,19 @@ def resource(table: Table) -> dict[str, Any]:
     description = "\n\n".join(
         filter(None, [table.spec.get("description", ""), table.citation, table.notes])
     )
-    source_row = {
-        "name": "source_row",
-        "type": "integer",
-        "description": f"Row in the source file ({table.source})",
-    }
     fields = [
         {"name": c["name"], "type": c["type"], "description": c["description"]}
         for c in table.columns
     ]
+    if "source_row" in table.arrow.column_names:
+        fields.insert(
+            0,
+            {
+                "name": "source_row",
+                "type": "integer",
+                "description": f"Row in the source file ({table.source})",
+            },
+        )
     return {
         "name": table.name,
         "title": table.spec["title"],
@@ -63,7 +67,7 @@ def resource(table: Table) -> dict[str, Any]:
         "mediatype": "text/csv",
         "encoding": "utf-8",
         "schema": {
-            "fields": [source_row, *fields],
+            "fields": fields,
             "primaryKey": table.spec.get("keys", ["source_row"]),
         },
     }
@@ -90,8 +94,9 @@ def build_package(tables: list[Table]) -> None:
     (PACKAGE_DIR / "data").mkdir(parents=True)
     (PACKAGE_DIR / "docs").mkdir()
     for table in tables:
+        order = "source" if table.name == "sources" else "source_row"
         duckdb.sql(
-            f"copy (select * from '{PARQUET_DIR / table.name}.parquet' order by source_row) "
+            f"copy (select * from '{PARQUET_DIR / table.name}.parquet' order by {order}) "
             f"to '{PACKAGE_DIR / 'data' / table.name}.csv' (header)"
         )
     resources = sorted((resource(table) for table in tables), key=lambda r: r["name"])
