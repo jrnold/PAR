@@ -4,7 +4,7 @@
 # Environment:
 #   KEYS       keystrokes to feed in (mk.py syntax), e.g. '{w5}/fr{enter}'
 #   SHOT_AT    space-separated seconds after start at which to save /work/shot-<s>.png
-#   GUI        set to 1 to serve the display at http://localhost:6080/vnc.html (publish -p 6080:6080)
+#   GUI        set to 1 to serve the display at http://localhost:6080/vnc.html (publish -p 127.0.0.1:6080:6080)
 #   TIMEOUT    kill DOSBox-X after this many seconds (default 120; 0 = never, the default with GUI)
 set -euo pipefail
 C=/opt/qp/c
