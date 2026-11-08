@@ -8,6 +8,8 @@ extend-exclude = [
   "_site/",
   "data/",
   "data-raw/",
+  # Text quoted from the 1993 catalog: author names, dBASE field names, original misspellings
+  "docs/ADA279069-datasets.json",
 ]
 
 [default]
